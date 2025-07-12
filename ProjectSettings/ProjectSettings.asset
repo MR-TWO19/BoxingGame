@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 35d1fcdeb33401e4c9d35119d0ce56f5
+  productGUID: 8e9e0c4c28794ee41a85f7d17227d5d6
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -161,8 +161,7 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier:
-    Standalone: com.DefaultCompany.BoxingGamme
+  applicationIdentifier: {}
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -948,10 +947,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 993a5263-48c2-4533-bef5-cce31c89cbc0
+  cloudProjectId: e9e25f1d-05a0-49bc-8911-d5ea20fc56b2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BoxingGamme
+  projectName: BoxingGamme 2025-07-12_16-50-43
   organizationId: mrpu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
