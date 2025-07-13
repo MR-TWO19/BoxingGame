@@ -1,18 +1,32 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class SwipeDetector : MonoBehaviour
 {
+    public static SwipeDetector Ins;
+
     [Header("Swipe Settings")]
     public float minSwipeDistance = 50f; // pixel
     private Vector2 startPos;
     private bool isSwiping = false;
+
+    [Header("Ignore Area")]
+    public RectTransform ignoreArea;
 
     [Header("Swipe Events")]
     public UnityEvent OnSwipeUp;
     public UnityEvent OnSwipeDown;
     public UnityEvent OnSwipeLeft;
     public UnityEvent OnSwipeRight;
+    public UnityEvent OnSwipeClick;
+
+    private void Awake()
+    {
+        if (Ins == null)
+            Ins = this;
+    }
 
     void Update()
     {
@@ -27,12 +41,14 @@ public class SwipeDetector : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE
     void HandleMouseSwipe()
     {
-        if (Input.GetMouseButtonDown(0))
+        int idx = IsUI() ? 1 : 0;
+
+        if (Input.GetMouseButtonDown(idx))
         {
             startPos = Input.mousePosition;
             isSwiping = true;
         }
-        else if (Input.GetMouseButtonUp(0) && isSwiping)
+        else if (Input.GetMouseButtonUp(idx) && isSwiping)
         {
             DetectSwipe(Input.mousePosition);
             isSwiping = false;
@@ -43,9 +59,11 @@ public class SwipeDetector : MonoBehaviour
     {
         if (Input.touchCount == 0) return;
 
-        Touch touch = Input.GetTouch(0);
+        int idx = IsUI() ? 1 : 0;
+        Touch touch = Input.GetTouch(idx);
         if (touch.phase == TouchPhase.Began)
         {
+
             startPos = touch.position;
             isSwiping = true;
         }
@@ -62,13 +80,14 @@ public class SwipeDetector : MonoBehaviour
         Vector2 delta = endPos - startPos;
         if (delta.magnitude < minSwipeDistance)
         {
-            Debug.Log("Swipe quá ngắn, bỏ qua");
+            Debug.Log("Swipe: CLICK");
+            OnSwipeClick?.Invoke();
             return;
         }
 
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
         {
-            if (delta.x > 0)
+            if (delta.x < 0)
             {
                 Debug.Log("Swipe: RIGHT →");
                 OnSwipeRight?.Invoke();
@@ -92,5 +111,21 @@ public class SwipeDetector : MonoBehaviour
                 OnSwipeDown?.Invoke();
             }
         }
+    }
+
+    private bool IsUI()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return true;
+        }
+#else
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            return true;
+        }
+#endif
+        return false;
     }
 }
