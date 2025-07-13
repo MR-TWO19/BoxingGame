@@ -7,6 +7,9 @@ public class CharacterController : MonoBehaviour
 {
     public SimpleJoystick joystick;
     public float speed = 5f;
+    [SerializeField] Animator animator;
+
+    private CharacterState characterState = CharacterState.Idle;
 
     void Update()
     {
@@ -15,8 +18,22 @@ public class CharacterController : MonoBehaviour
         transform.Translate(speed * Time.deltaTime * move, Space.World);
         if (move.sqrMagnitude > 0.01f)
         {
+            if(characterState != CharacterState.Move)
+            {
+                characterState = CharacterState.Move;
+                animator.SetTrigger("moving");
+            }    
             Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+        }
+        else
+        {
+            if (characterState != CharacterState.Idle)
+            {
+                characterState = CharacterState.Idle;
+                animator.SetTrigger("Idle");
+            }
+
         }
     }
 }
