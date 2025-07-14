@@ -14,7 +14,6 @@ public class SimpleJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IP
         pos = Vector2.ClampMagnitude(pos, background.sizeDelta.x / 2f);
         handle.anchoredPosition = pos;
         inputVector = pos / (background.sizeDelta.x / 2f);
-        Debug.Log("B-- inputVector:" + inputVector);
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Head
+  - LeftHand
+  - RightHand
+  - Enamy
+  - Ally
+  - Belly
   layers:
   - Default
   - TransparentFX
