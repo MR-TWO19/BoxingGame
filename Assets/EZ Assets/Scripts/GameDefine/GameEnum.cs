@@ -13,7 +13,7 @@ public enum CharacterState
     KidneyHitLeft,
     KidneyHitRight,
     StomachHit,
-    Dead
+    Dead,
 }
 
 public enum BodyPart

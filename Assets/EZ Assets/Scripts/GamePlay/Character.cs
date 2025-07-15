@@ -1,8 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
-using static UnityEngine.GraphicsBuffer;
-using Unity.VisualScripting;
 
 public class Character : MonoBehaviour
 {
@@ -29,28 +26,12 @@ public class Character : MonoBehaviour
         bellyHitBox.OnhitEvent.AddListener(BellyHitBoxEvent);
     }
 
-    private void UpdateAtkTarget()
+    void OnCollisionEnter(Collision collision)
     {
-        //Vector3 targetPos = target.transform.position;
-        //float distance = Vector3.Distance(transform.position, targetPos);
-        //float distanceATKTagert = distanceAtk;
-        //if (distance > distanceATKTagert && isChasing)
-        //{
-        //    MoveCharacter(true);
-        //    transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-        //    transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
-        //}
-        //else if (!isAtk)
-        //{
-        //    isAtk = true;
-        //    DOVirtual.DelayedCall(0.5f, () =>
-        //    {
-        //        isAtk = false;
-        //    });
-        //    Attack();
-        //    transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
-        //    isChasing = Vector3.Distance(transform.position, target.transform.position) > distanceATKTagert;
-        //}
+        if(collision.gameObject.CompareTag("Enamy"))
+        {
+
+        }    
     }
 
     #region Public Methods
@@ -83,6 +64,21 @@ public class Character : MonoBehaviour
                 animator.SetBool("Move", false);
             }
         }
+    }
+
+    public void BotMove(Vector3 targetPos)
+    {
+        animator.SetBool("Move", true);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, characterData.Speed * Time.deltaTime);
+        transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
+    }
+
+    public void BotAttack()
+    {
+        if (isAction) return;
+        animator.SetBool("Move", false);
+        Attack(CharacterState.PunchStraight);
+
     }
 
     public void Attack(CharacterState state)
@@ -150,6 +146,12 @@ public class Character : MonoBehaviour
             {
                 damage = hitBox.character.characterData.DamgeRightHand * (GameConfig.Ins.bellyRate / 100);
                 characterState = CharacterState.KidneyHitRight;
+                hitBox.character.rightHandHitBox.DissableColide();
+            }
+            else if (hitBox.CompareTag("RightHand") && hitBox.character.characterState == CharacterState.PunchStraight)
+            {
+                damage = hitBox.character.characterData.DamgeRightHand;
+                characterState = CharacterState.StomachHit;
                 hitBox.character.rightHandHitBox.DissableColide();
             }
             else
