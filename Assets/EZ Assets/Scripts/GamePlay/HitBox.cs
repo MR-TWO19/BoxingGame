@@ -7,7 +7,7 @@ public class HitBox : MonoBehaviour
     public TeamType teamType;
     public bool isTriggerEnter;
     [HideInInspector] public Character character;
-    [HideInInspector] public UnityEvent<HitBox, Character> OnhitEvent;
+    [HideInInspector] public UnityEvent<HitBox> OnhitEvent;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,7 +22,7 @@ public class HitBox : MonoBehaviour
 
     protected virtual void OnHit(HitBox other)
     {
-        OnhitEvent?.Invoke(this, character);
+        OnhitEvent?.Invoke(other);
     }
 
     protected virtual bool IsLock(Collider other)

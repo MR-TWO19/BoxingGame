@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 3578825460289351110}
   m_Layer: 0
   m_Name: hand.l
-  m_TagString: RightHand
+  m_TagString: LeftHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,6 +361,7 @@ MonoBehaviour:
   OnhitEvent:
     m_PersistentCalls:
       m_Calls: []
+  collider: {fileID: 1841332308974626772}
 --- !u!1 &1848063294456382600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1275,7 @@ GameObject:
   - component: {fileID: 4393504424288322303}
   m_Layer: 0
   m_Name: hand.r
-  m_TagString: LeftHand
+  m_TagString: RightHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1339,6 +1340,7 @@ MonoBehaviour:
   OnhitEvent:
     m_PersistentCalls:
       m_Calls: []
+  collider: {fileID: 4679964501396826993}
 --- !u!1 &5191343093229078515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,8 +1691,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23, y: 0.28, z: 0.15}
-  m_Center: {x: 0, y: -0.085, z: 0.03}
+  m_Size: {x: 0.28, y: 0.28, z: 0.15}
+  m_Center: {x: -0.025, y: -0.085, z: 0.03}
 --- !u!114 &4973973477891566500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,9 +2063,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4a15ba67fcce649a73978e4ca3a8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterData:
+    Head: 10
+    Speed: 1
+    DamgeLeftHand: 1
+    DamgeRightHand: 2
   animator: {fileID: 4161141258026543193}
   headHitBox: {fileID: 4410494201026718091}
   bellyHitBox: {fileID: 4973973477891566500}
+  rightHandHitBox: {fileID: 4393504424288322303}
+  leftHandHitBox: {fileID: 3578825460289351110}
   characterState: 0
 --- !u!136 &2932614009355469585
 CapsuleCollider:
@@ -2084,10 +2093,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Height: 0
   m_Direction: 1
-  m_Center: {x: 0, y: 0.28, z: 0}
+  m_Center: {x: 0, y: 0.23, z: 0}
 --- !u!1 &7334735811222076657
 GameObject:
   m_ObjectHideFlags: 0
