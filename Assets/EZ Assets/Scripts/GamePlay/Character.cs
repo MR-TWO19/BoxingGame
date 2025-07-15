@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public HitBox headHitBox;
     public HitBox bellyHitBox;
 
-    private CharacterState characterState = CharacterState.Idle;
+    public CharacterState characterState = CharacterState.Idle;
     private TeamType teamType;
     private bool isAction;
 

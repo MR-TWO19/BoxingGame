@@ -356,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPart: 1
   teamType: 0
+  isTriggerEnter: 0
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
@@ -1331,8 +1332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e100a080f4cd2134eb079afbec9a8e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPart: 2
+  bodyPart: 1
   teamType: 0
+  isTriggerEnter: 0
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
@@ -1627,6 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPart: 0
   teamType: 0
+  isTriggerEnter: 1
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
@@ -1702,6 +1705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPart: 3
   teamType: 0
+  isTriggerEnter: 1
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
@@ -1945,7 +1949,7 @@ GameObject:
   - component: {fileID: 8626670494951550120}
   - component: {fileID: 6765186206735900608}
   - component: {fileID: 3131999694410693189}
-  - component: {fileID: 8486305666671916072}
+  - component: {fileID: 2932614009355469585}
   m_Layer: 0
   m_Name: charMobLA_01
   m_TagString: Ally
@@ -2060,8 +2064,9 @@ MonoBehaviour:
   animator: {fileID: 4161141258026543193}
   headHitBox: {fileID: 4410494201026718091}
   bellyHitBox: {fileID: 4973973477891566500}
---- !u!135 &8486305666671916072
-SphereCollider:
+  characterState: 0
+--- !u!136 &2932614009355469585
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2078,9 +2083,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.22
-  m_Center: {x: 0, y: 0.2, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &7334735811222076657
 GameObject:
   m_ObjectHideFlags: 0

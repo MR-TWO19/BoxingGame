@@ -5,12 +5,13 @@ public class HitBox : MonoBehaviour
 {
     public BodyPart bodyPart;
     public TeamType teamType;
+    public bool isTriggerEnter;
     [HideInInspector] public Character character;
     [HideInInspector] public UnityEvent<HitBox, Character> OnhitEvent;
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((bodyPart == BodyPart.LeftHand || bodyPart == BodyPart.RightHand) && (other.CompareTag("LeftHand") || other.CompareTag("RightHand"))) return;
+        if (IsLock(other) || !isTriggerEnter) return;
         Debug.Log("B-----" + gameObject.name);
         if (!other.TryGetComponent<HitBox>(out var otherHit)) return;
 
@@ -22,5 +23,12 @@ public class HitBox : MonoBehaviour
     protected virtual void OnHit(HitBox other)
     {
         OnhitEvent?.Invoke(this, character);
+    }
+
+    protected virtual bool IsLock(Collider other)
+    {
+        if((gameObject.CompareTag("LeftHand") || gameObject.CompareTag("RightHand")) &&
+            (other.CompareTag("LeftHand") || other.CompareTag("RightHand"))) return true;
+        else return false;
     }
 }
