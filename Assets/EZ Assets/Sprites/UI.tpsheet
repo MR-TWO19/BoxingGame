@@ -1,0 +1,44 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:130895a367db42b2b1c6b3e5bcc2ee14:8e7b040c69c76e220667d6827380698d:64d56465927d50bb5400e4c66dc46a97$
+#
+:format=40300
+:texture=UI.png
+:size=2048x1024
+:pivotpoints=enabled
+:borders=enabled
+
+9scaleBorder;1561;37;65;65; 0.5;0.5; 0;0;0;0
+9scaleBorderGlow;1259;578;65;65; 0.5;0.5; 0;0;0;0
+9scaleSquare;1259;514;60;60; 0.5;0.5; 15;15;15;15
+AvatarMask;1487;32;70;70; 0.5;0.5; 0;0;0;0
+AvatarStroke;1487;106;72;72; 0.5;0.5; 0;0;0;0
+battleIconVS;4;56;219;218; 0.5;0.5; 0;0;0;0
+btnBigBlue;960;832;257;117; 0.5;0.5; 0;0;0;0
+btnBigGreen;1221;832;257;117; 0.5;0.5; 0;0;0;0
+btnBigGrey;965;7;257;117; 0.5;0.5; 0;0;0;0
+btnBigOrange;1226;20;257;117; 0.5;0.5; 0;0;0;0
+btnBigPurple;1255;182;257;117; 0.5;0.5; 0;0;0;0
+btnCircleBlue;285;422;174;192; 0.5;0.5; 0;0;0;0
+btnCirclePurple;342;634;174;192; 0.5;0.5; 0;0;0;0
+btnCircleRed;463;438;174;192; 0.5;0.5; 0;0;0;0
+CardBack;4;618;334;402; 0.5;0.5; 0;0;0;0
+Group 41624;4;278;277;336; 0.5;0.5; 0;0;0;0
+iconAddfriendReward;1122;141;129;135; 0.5;0.5; 0;0;0;0
+iconAddfriendRewardDisable;1216;303;129;135; 0.5;0.5; 0;0;0;0
+iconBattleScore;227;6;56;49; 0.5;0.5; 0;0;0;0
+iconCross;287;6;48;49; 0.4791666666666667;0.5; 0;0;0;0
+iconLoading;965;128;153;148; 0.5032679738562091;0.4966216216216216; 0;0;0;0
+iconLock;1259;451;50;59; 0.55;0.5; 0;0;0;0
+luckyPrizeRewardBG1;342;830;614;190; 0.5;0.5; 154;153;0;0
+luckyPrizeRewardBG2;520;636;614;190; 0.5;0.5; 154;153;0;0
+luckyPrizeRewardBG3;641;442;614;190; 0.5;0.5; 154;153;0;0
+panelPopup;227;59;734;215; 0.5;0.5023255813953489; 0;0;0;0
+progressbarTapTapBg;285;280;927;138; 0.5;0.5; 232;453;0;0
+Textbox5;4;6;181;46; 0.5;0.5; 45;45;0;0
+Vector 702;1138;647;194;181; 0.5;0.5; 0;0;0;0
+VsLine;965;953;1051;67; 0.5;0.4925373134328358; 0;0;0;0
