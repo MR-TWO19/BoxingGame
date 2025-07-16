@@ -3,8 +3,6 @@ using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
-    public BodyPart bodyPart;
-    public TeamType teamType;
     public bool isTriggerEnter;
     [HideInInspector] public Character character;
     [HideInInspector] public UnityEvent<HitBox> OnhitEvent;
@@ -15,7 +13,7 @@ public class HitBox : MonoBehaviour
         Debug.Log("B-----" + gameObject.name);
         if (!other.TryGetComponent<HitBox>(out var otherHit)) return;
 
-        if (otherHit.teamType == teamType) return;
+        if (otherHit.character.teamType == character.teamType) return;
 
         OnHit(otherHit);
     }

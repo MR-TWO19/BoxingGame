@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class Character : MonoBehaviour
     public HandHitBox leftHandHitBox;
 
     public CharacterState characterState = CharacterState.Idle;
-    private TeamType teamType;
+    public TeamType teamType;
     private bool isAction;
 
     private void Start()
@@ -24,14 +25,6 @@ public class Character : MonoBehaviour
         leftHandHitBox.DissableColide();
         headHitBox.OnhitEvent.AddListener(HeadHitBoxEvent);
         bellyHitBox.OnhitEvent.AddListener(BellyHitBoxEvent);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Enamy"))
-        {
-
-        }    
     }
 
     #region Public Methods
@@ -103,15 +96,20 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Dodge");
         StartCoroutine(ResetToIdleAfterAnimation(CharacterState.Dodge));
     }
+
+    public bool IsKnockedOut()
+    {
+        return characterState == CharacterState.KnockedOut;
+    }
     #endregion
 
     #region UnityEvent
     private void HeadHitBoxEvent(HitBox hitBox)
     {
-        if (hitBox != null && hitBox.teamType == teamType)
+        if (characterState == CharacterState.Dodge || IsKnockedOut()) return;
+        if (hitBox != null && hitBox.character.teamType != teamType)
         {
             float damage;
-            CharacterState characterState;
             if (hitBox.CompareTag("RightHand") && hitBox.character.characterState == CharacterState.PunchUppercut)
             {
                 damage = hitBox.character.characterData.DamgeRightHand * (GameConfig.Ins.headDamageRate / 100);
@@ -120,7 +118,6 @@ public class Character : MonoBehaviour
             }
             else
             {
-                hitBox.character.rightHandHitBox.DissableColide();
                 return;
             }
             TakeDamage(damage);
@@ -131,11 +128,10 @@ public class Character : MonoBehaviour
 
     private void BellyHitBoxEvent(HitBox hitBox)
     {
-        if (hitBox.character.characterState == CharacterState.PunchUppercut) return;
-        if (hitBox != null && hitBox.teamType == teamType)
+        if (hitBox.character.characterState == CharacterState.PunchUppercut || characterState == CharacterState.Dodge || IsKnockedOut()) return;
+        if (hitBox != null && hitBox.character.teamType != teamType)
         {
             float damage;
-            CharacterState characterState;
             if (hitBox.CompareTag("LeftHand") && hitBox.character.characterState == CharacterState.PunchLeft)
             {
                 damage = hitBox.character.characterData.DamgeLeftHand * (GameConfig.Ins.bellyRate / 100);
@@ -156,8 +152,6 @@ public class Character : MonoBehaviour
             }
             else
             {
-                hitBox.character.rightHandHitBox.DissableColide();
-                hitBox.character.leftHandHitBox.DissableColide();
                 return;
             }
             TakeDamage(damage);
@@ -170,21 +164,31 @@ public class Character : MonoBehaviour
     #region private halpers
     private bool IsInAction()
     {
-        return characterState == CharacterState.PunchUppercut ||
-               characterState == CharacterState.PunchLeft ||
-               characterState == CharacterState.PunchRight ||
-               characterState == CharacterState.PunchStraight ||
-               characterState == CharacterState.Dodge;
+        return characterState is CharacterState.PunchUppercut or
+               CharacterState.PunchLeft or
+               CharacterState.PunchRight or
+               CharacterState.PunchStraight or
+               CharacterState.HeadHit or
+               CharacterState.KidneyHitLeft or
+               CharacterState.PunchStraight or
+               CharacterState.KidneyHitRight or
+               CharacterState.StomachHit or
+               CharacterState.Dodge;
     }
 
     private IEnumerator ResetToIdleAfterAnimation(CharacterState state)
     {
-        string clipName = (state == CharacterState.PunchLeft || state == CharacterState.PunchRight) ? "KidneyHit" : state.ToString();
-        float duration = GetClipDuration(clipName) * 0.9f;
+        string clipName = (state == CharacterState.KidneyHitLeft || state == CharacterState.KidneyHitRight) ? "KidneyHit" : state.ToString();
+        float duration = GetClipDuration(clipName);
         yield return new WaitForSeconds(duration);
         isAction = false;
-        characterState = CharacterState.Idle;
-        animator.SetTrigger("Idle");
+        if (!IsKnockedOut())
+        {
+            characterState = CharacterState.Idle;
+            animator.SetTrigger("Idle");
+        }
+        rightHandHitBox.DissableColide();
+        leftHandHitBox.DissableColide();
     }
 
     private float GetClipDuration(string clipName)
@@ -200,8 +204,19 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        characterState = CharacterState.Dodge;
         characterData.Head -= damage;
+        if(characterData.Head <= 0)
+        {
+            characterState = CharacterState.KnockedOut;
+            animator.SetTrigger(characterState.ToString());
+            float duration = GetClipDuration(characterState.ToString()) + 2;
+            DOVirtual.DelayedCall(duration, () =>
+            {
+                gameObject.SetActive(false);
+            });
+
+        }    
     }
+
     #endregion
 }

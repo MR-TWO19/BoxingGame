@@ -8,12 +8,11 @@ public enum CharacterState
     PunchUppercut,
     PunchStraight,
     Dodge,
-    Stunned,
     HeadHit,
     KidneyHitLeft,
     KidneyHitRight,
     StomachHit,
-    Dead,
+    KnockedOut,
 }
 
 public enum BodyPart

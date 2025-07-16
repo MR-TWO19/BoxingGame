@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public SimpleJoystick joystick;
-    public GameObject objTarget;
+    public Character objTarget;
     [SerializeField] private Character character;
     public bool isBot;
     private bool botDisable;
@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
 
     private void Start()
     {
+        if (isBot) return;
         SwipeDetector.Ins.OnSwipeUp.AddListener(() => character.Attack(CharacterState.PunchUppercut));
         SwipeDetector.Ins.OnSwipeDown.AddListener(() => character.Dodge());
         SwipeDetector.Ins.OnSwipeLeft.AddListener(() => character.Attack(CharacterState.PunchLeft));
@@ -22,9 +23,11 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if(character.IsKnockedOut()) return;
+
         if (!isBot)
         {
-            character.ControlByDirection(joystick.Direction());
+           if(joystick) character.ControlByDirection(joystick.Direction());
         }
         else
         {
@@ -34,7 +37,7 @@ public class CharacterController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (!isBot) return;
+        if (!isBot || character.IsKnockedOut()) return;
         if (collision.gameObject.CompareTag("Enamy") && gameObject.CompareTag("Ally") ||
             collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enamy"))
         {
@@ -44,7 +47,7 @@ public class CharacterController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!isBot) return;
+        if (!isBot || character.IsKnockedOut()) return;
         if (collision.gameObject.CompareTag("Enamy") && gameObject.CompareTag("Ally") ||
             collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enamy"))
         {
@@ -54,7 +57,7 @@ public class CharacterController : MonoBehaviour
 
     private void BotHandler()
     {
-        if(botDisable) return;
+        if(objTarget.IsKnockedOut() || botDisable) return;
         Vector3 targetPos = objTarget.transform.position;
         if (!isAtk)
         {
@@ -64,7 +67,7 @@ public class CharacterController : MonoBehaviour
         {
             botDisable = true;
             character.BotAttack();
-            DOVirtual.DelayedCall(2, () =>
+            DOVirtual.DelayedCall(5, () =>
             {
                 botDisable = false;
             });

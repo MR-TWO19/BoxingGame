@@ -1692,7 +1692,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.28, y: 0.28, z: 0.15}
-  m_Center: {x: -0.025, y: -0.085, z: 0.03}
+  m_Center: {x: -0.025, y: -0.07, z: 0.03}
 --- !u!114 &4973973477891566500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
+  objTarget: {fileID: 0}
   character: {fileID: 3131999694410693189}
+  isBot: 0
 --- !u!114 &6765186206735900608
 MonoBehaviour:
   m_ObjectHideFlags: 0
