@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public CharacterData characterData = new(10,1,1,2);
+    public CharacterData characterData = new(10,0.1f,1,2);
     public Animator animator;
     public HitBox headHitBox;
     public HitBox bellyHitBox;
@@ -28,6 +28,16 @@ public class Character : MonoBehaviour
     }
 
     #region Public Methods
+    public void SetUp(CharacterData data, TeamType _teamType)
+    {
+        characterData.HP += data.HP;
+        characterData.Speed += data.Speed;
+        characterData.DamgeRightHand += data.DamgeRightHand;
+        characterData.DamgeLeftHand += data.DamgeLeftHand;
+        teamType = _teamType;
+        gameObject.tag = teamType.ToString();
+    }
+
     public void ControlByDirection(Vector2 dir)
     {
         if (IsInAction()) return;
@@ -120,6 +130,7 @@ public class Character : MonoBehaviour
             {
                 return;
             }
+
             TakeDamage(damage);
             animator.SetTrigger(characterState.ToString());
             StartCoroutine(ResetToIdleAfterAnimation(characterState));
@@ -154,6 +165,7 @@ public class Character : MonoBehaviour
             {
                 return;
             }
+
             TakeDamage(damage);
             animator.SetTrigger(characterState.ToString());
             StartCoroutine(ResetToIdleAfterAnimation(characterState));
@@ -204,8 +216,8 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        characterData.Head -= damage;
-        if(characterData.Head <= 0)
+        characterData.HP -= damage;
+        if(characterData.HP <= 0)
         {
             characterState = CharacterState.KnockedOut;
             animator.SetTrigger(characterState.ToString());

@@ -7,9 +7,9 @@ TagManager:
   - Head
   - LeftHand
   - RightHand
-  - Enamy
   - Ally
   - Belly
+  - Enemy
   layers:
   - Default
   - TransparentFX

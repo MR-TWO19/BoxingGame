@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HandHitBox : HitBox
 {
-    [SerializeField] Collider collider;
+    [SerializeField] Collider handCollider;
 
-    public void DissableColide() => collider.enabled = false;
-    public void EnabledColide() => collider.enabled = true;
+    public void DissableColide() => handCollider.enabled = false;
+    public void EnabledColide() => handCollider.enabled = true;
 }

@@ -354,14 +354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e100a080f4cd2134eb079afbec9a8e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPart: 1
-  teamType: 0
   isTriggerEnter: 0
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
       m_Calls: []
-  collider: {fileID: 1841332308974626772}
+  handCollider: {fileID: 1841332308974626772}
 --- !u!1 &1848063294456382600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,14 +1331,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e100a080f4cd2134eb079afbec9a8e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPart: 1
-  teamType: 0
   isTriggerEnter: 0
   character: {fileID: 0}
   OnhitEvent:
     m_PersistentCalls:
       m_Calls: []
-  collider: {fileID: 4679964501396826993}
+  handCollider: {fileID: 4679964501396826993}
 --- !u!1 &5191343093229078515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,8 +1625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec35177bf6e30c45a2d019a66410915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPart: 0
-  teamType: 0
   isTriggerEnter: 1
   character: {fileID: 0}
   OnhitEvent:
@@ -1705,8 +1699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec35177bf6e30c45a2d019a66410915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPart: 3
-  teamType: 0
   isTriggerEnter: 1
   character: {fileID: 0}
   OnhitEvent:
@@ -2076,6 +2068,7 @@ MonoBehaviour:
   rightHandHitBox: {fileID: 4393504424288322303}
   leftHandHitBox: {fileID: 3578825460289351110}
   characterState: 0
+  teamType: 0
 --- !u!136 &2932614009355469585
 CapsuleCollider:
   m_ObjectHideFlags: 0

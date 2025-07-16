@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public SimpleJoystick joystick;
-    public Character objTarget;
     [SerializeField] private Character character;
-    public bool isBot;
+    private Character objTarget;
+    private bool isBot;
     private bool botDisable;
     private bool isAtk;
     private void Awake() => character = GetComponent<Character>();
@@ -14,11 +13,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         if (isBot) return;
-        SwipeDetector.Ins.OnSwipeUp.AddListener(() => character.Attack(CharacterState.PunchUppercut));
-        SwipeDetector.Ins.OnSwipeDown.AddListener(() => character.Dodge());
-        SwipeDetector.Ins.OnSwipeLeft.AddListener(() => character.Attack(CharacterState.PunchLeft));
-        SwipeDetector.Ins.OnSwipeRight.AddListener(() => character.Attack(CharacterState.PunchRight));
-        SwipeDetector.Ins.OnSwipeClick.AddListener(() => character.Attack(CharacterState.PunchStraight));
+
     }
 
     void Update()
@@ -27,7 +22,7 @@ public class CharacterController : MonoBehaviour
 
         if (!isBot)
         {
-           if(joystick) character.ControlByDirection(joystick.Direction());
+           if(UIManager.Ins.joystick) character.ControlByDirection(UIManager.Ins.joystick.Direction());
         }
         else
         {
@@ -38,8 +33,8 @@ public class CharacterController : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         if (!isBot || character.IsKnockedOut()) return;
-        if (collision.gameObject.CompareTag("Enamy") && gameObject.CompareTag("Ally") ||
-            collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enamy"))
+        if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Ally") ||
+            collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enemy"))
         {
             isAtk = false;
         }
@@ -48,11 +43,25 @@ public class CharacterController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (!isBot || character.IsKnockedOut()) return;
-        if (collision.gameObject.CompareTag("Enamy") && gameObject.CompareTag("Ally") ||
-            collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enamy"))
+        if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Ally") ||
+            collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enemy"))
         {
             isAtk = true;
         }
+    }
+
+    public void SetUp(CharacterData characterData, TeamType teamType, bool isPlayer)
+    {
+        if (isPlayer)
+        {
+            SwipeDetector.Ins.OnSwipeUp.AddListener(() => character.Attack(CharacterState.PunchUppercut));
+            SwipeDetector.Ins.OnSwipeDown.AddListener(() => character.Dodge());
+            SwipeDetector.Ins.OnSwipeLeft.AddListener(() => character.Attack(CharacterState.PunchLeft));
+            SwipeDetector.Ins.OnSwipeRight.AddListener(() => character.Attack(CharacterState.PunchRight));
+            SwipeDetector.Ins.OnSwipeClick.AddListener(() => character.Attack(CharacterState.PunchStraight));
+        }
+        isBot = !isPlayer;
+        character.SetUp(characterData, teamType);
     }
 
     private void BotHandler()

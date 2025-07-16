@@ -1,4 +1,12 @@
-//Character
+public enum GameMode
+{
+    OneVSOne,
+    OneVSMany,
+    ManeyVsMany
+} 
+
+
+#region Character
 public enum CharacterState
 {
     Idle,
@@ -28,3 +36,4 @@ public enum TeamType
     Ally,
     Enemy
 }
+#endregion
