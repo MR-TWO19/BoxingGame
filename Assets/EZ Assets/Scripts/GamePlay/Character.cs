@@ -84,6 +84,11 @@ public class Character : MonoBehaviour
 
     }
 
+    public void BotDisible()
+    {
+        animator.SetTrigger("Idle");
+    }
+
     public void Attack(CharacterState state)
     {
         if (isAction) return;

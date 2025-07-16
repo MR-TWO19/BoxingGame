@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : SingletonMono<GameManager>
 {
+    public List<GameObject> PosCharacters;
+
     public void PlayGame(GameMode gameMode)
     {
         switch (gameMode)

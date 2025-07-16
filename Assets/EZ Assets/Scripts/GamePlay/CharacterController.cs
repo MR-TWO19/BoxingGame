@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     private bool isBot;
     private bool botDisable;
     private bool isAtk;
+    private float timeBotDisible = 5;
     private void Awake() => character = GetComponent<Character>();
 
     private void Start()
@@ -48,6 +49,14 @@ public class CharacterController : MonoBehaviour
         {
             isAtk = true;
         }
+        else
+        {
+            botDisable = true;
+            DOVirtual.DelayedCall(timeBotDisible, () =>
+            {
+                botDisable = false;
+            });
+        }    
     }
 
     public void SetUp(CharacterData characterData, TeamType teamType, bool isPlayer)
@@ -68,18 +77,18 @@ public class CharacterController : MonoBehaviour
     {
         if(objTarget.IsKnockedOut() || botDisable) return;
         Vector3 targetPos = objTarget.transform.position;
-        if (!isAtk)
-        {
-            character.BotMove(targetPos);
-        }
-        else
+        if (isAtk)
         {
             botDisable = true;
             character.BotAttack();
-            DOVirtual.DelayedCall(5, () =>
+            DOVirtual.DelayedCall(timeBotDisible, () =>
             {
                 botDisable = false;
             });
+        }
+        else
+        {
+            character.BotMove(targetPos);
         }
     }
 }

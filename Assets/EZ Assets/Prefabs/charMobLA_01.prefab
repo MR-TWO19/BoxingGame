@@ -1946,7 +1946,7 @@ GameObject:
   - component: {fileID: 2932614009355469585}
   m_Layer: 0
   m_Name: charMobLA_01
-  m_TagString: Ally
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2028,10 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef293664011c6fd43b7a68f421a56c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  objTarget: {fileID: 0}
   character: {fileID: 3131999694410693189}
-  isBot: 0
 --- !u!114 &6765186206735900608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData:
-    Head: 10
+    HP: 10
     Speed: 1
     DamgeLeftHand: 1
     DamgeRightHand: 2
@@ -2068,7 +2065,7 @@ MonoBehaviour:
   rightHandHitBox: {fileID: 4393504424288322303}
   leftHandHitBox: {fileID: 3578825460289351110}
   characterState: 0
-  teamType: 0
+  teamType: 1
 --- !u!136 &2932614009355469585
 CapsuleCollider:
   m_ObjectHideFlags: 0
