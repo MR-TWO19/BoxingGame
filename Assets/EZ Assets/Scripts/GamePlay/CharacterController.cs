@@ -14,7 +14,7 @@ public class CharacterController : MonoBehaviour
     private float timeBotDisible = 5;
     private void Awake() => character = GetComponent<Character>();
 
-    void Update()
+    public void CustomUpdate()
     {
         if(character.IsKnockedOut() || !isActive) return;
 
@@ -122,13 +122,10 @@ public class CharacterController : MonoBehaviour
         if (isAtk)
         {
             botDisable = true;
-            DOVirtual.DelayedCall(1, () =>
+            character.BotAttack();
+            DOVirtual.DelayedCall(timeBotDisible, () =>
             {
-                character.BotAttack();
-                DOVirtual.DelayedCall(timeBotDisible, () =>
-                {
-                    botDisable = false;
-                });
+                botDisable = false;
             });
         }
         else

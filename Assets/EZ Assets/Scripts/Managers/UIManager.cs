@@ -8,12 +8,11 @@ public class UIManager : SingletonMono<UIManager>
     public SimpleJoystick joystick;
     public MainView mainView;
     public LevelPopup levelPopup;
+    public ResultPopup resultPopup;
 
     private void Start()
     {
-        mainView.Show();
-        levelPopup.Hide();
-        uiGamePlay.gameObject.SetActive(false);
+        ResetUI();
     }
 
     public void ShowGamePlay()
@@ -21,5 +20,12 @@ public class UIManager : SingletonMono<UIManager>
         uiGamePlay.gameObject.SetActive(true);
         levelPopup.Hide();
         mainView.Hide();
+    }
+
+    public void ResetUI()
+    {
+        mainView.Show();
+        levelPopup.Hide();
+        uiGamePlay.gameObject.SetActive(false);
     }
 }

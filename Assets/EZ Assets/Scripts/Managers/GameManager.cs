@@ -11,6 +11,15 @@ public class GameManager : SingletonMono<GameManager>
     public List<GameObject> CharacterList;
     public IGameModeBase GameMove;
 
+    private void Update()
+    {
+        if (GameMove != null)
+        {
+            GameMove.Allys.ForEach(_ => _.CustomUpdate());
+            GameMove.Enemys.ForEach(_ => _.CustomUpdate());
+        }    
+    }
+
     public void SetUp(int Level, GameMode gameMode)
     {
         GameModeEnum = gameMode;
@@ -29,10 +38,10 @@ public class GameManager : SingletonMono<GameManager>
         }
 
         GameMove.SetUpGame(Level);
+        UIManager.Ins.ShowGamePlay();
         DOVirtual.DelayedCall(1, () =>
         {
             PlayGame();
-            UIManager.Ins.ShowGamePlay();
         });
     }
 

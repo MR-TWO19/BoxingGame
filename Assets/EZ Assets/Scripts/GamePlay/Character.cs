@@ -102,10 +102,7 @@ public class Character : MonoBehaviour
     {
         if (isAction) return;
         animator.SetBool("Move", false);
-        DOVirtual.DelayedCall(1, () =>
-        {
-            Attack(CharacterState.PunchStraight);
-        });
+        Attack(CharacterState.PunchStraight);
 
     }
 
@@ -135,6 +132,11 @@ public class Character : MonoBehaviour
         characterState = CharacterState.Dodge;
         animator.SetTrigger("Dodge");
         StartCoroutine(ResetToIdleAfterAnimation(CharacterState.Dodge));
+    }
+
+    public void Victory()
+    {
+        animator.SetTrigger("Victory");
     }
 
     public bool IsKnockedOut()

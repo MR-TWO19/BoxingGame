@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,9 +29,11 @@ public abstract class GameModeBase : IGameModeBase
     public void AllyDead(Character character)
     {
         Allys.RemoveAll(item => item.character == character);
-
-        if(Allys.Count <= 0)
+        Enemys.ForEach(_ => _.character.Victory());
+        if (Allys.Count <= 0)
         {
+            Debug.Log("B-- Close");
+            ShowResult(false);
             OnCloseEvent?.Invoke();   
         }
     }
@@ -38,10 +41,20 @@ public abstract class GameModeBase : IGameModeBase
     public void EnemyDead(Character character)
     {
         Enemys.RemoveAll(item => item.character == character);
-
+        Allys.ForEach(_ => _.character.Victory());
         if (Enemys.Count <= 0)
         {
+            Debug.Log("B-- win");
+            ShowResult(true);
             OnWinEvent?.Invoke();
         }
+    }
+
+    private void ShowResult(bool isWin) {
+        DOVirtual.DelayedCall(5, () =>
+        {
+
+        UIManager.Ins.resultPopup.Show(isWin);
+        });
     }
 }
