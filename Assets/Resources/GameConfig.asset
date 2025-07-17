@@ -12,20 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43938c391982eb143a9cfa0721ea35e7, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  characterDataPlayer:
+  PowerExtraDataPlayer:
     HP: 40
-    Speed: 0.2
-    DamgeLeftHand: 10
-    DamgeRightHand: 20
-  characterDataAlly:
-    HP: 0
-    Speed: 0.8
-    DamgeLeftHand: 10
-    DamgeRightHand: 20
-  characterDataEnemy:
+    Speed: 0.3
+    DamgeLeftHand: 5
+    DamgeRightHand: 10
+  PowerExtraDataAlly:
     HP: 0
     Speed: 0
     DamgeLeftHand: 0
     DamgeRightHand: 0
-  headDamageRate: 10
-  bellyRate: 5
+  headDamageRate: 50
+  bellyRate: 20

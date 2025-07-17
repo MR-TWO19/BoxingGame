@@ -7,9 +7,8 @@ public class GameManager : SingletonMono<GameManager>
 {
     public PosCharacters PosEnemys;
     public PosCharacters PosAllys;
-
+    public GameMode GameModeEnum;
     public List<GameObject> CharacterList;
-
     public IGameModeBase GameMove;
 
     private void Start()
@@ -43,5 +42,4 @@ public class GameManager : SingletonMono<GameManager>
     {
         GameMove.PlayGame();
     }
-
 }

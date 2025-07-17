@@ -16,6 +16,11 @@ public class HealthBar : MonoBehaviour
         imgFill.DOFillAmount(1,duration);
     }
 
+    public void SetName(string text)
+    {
+        txtName.text = text;
+    }
+
     public void SetHealth(float nomalHp, float oldHp, float curHp)
     {
         float fill = oldHp / nomalHp;

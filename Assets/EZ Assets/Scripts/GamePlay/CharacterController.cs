@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private Character character;
+    public Character character;
     private Character objTarget;
     private bool isActive;
     private bool isBot;
@@ -56,7 +56,7 @@ public class CharacterController : MonoBehaviour
         }    
     }
 
-    public void SetUp(CharacterData characterData, TeamType teamType, bool isPlayer)
+    public void SetUp(string name, PowerExtraData extraData, TeamType teamType, bool isPlayer)
     {
         isActive = false;
         if (isPlayer)
@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour
             CameraManager.Ins.SetUpCammeraFollow(gameObject);
         }
         isBot = !isPlayer;
-        character.SetUp(characterData, teamType);
+        character.SetUp(name, extraData, teamType);
     }
 
     public void Active()

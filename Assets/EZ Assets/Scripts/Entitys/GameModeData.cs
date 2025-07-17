@@ -14,7 +14,7 @@ public class LevelGameData
     public List<CharacterState> UseSkills;
     public int DodgeRate;
     public List<EnemyInfor> EnemyInfors;
-    public CharacterData EnemyExtraData;
+    public PowerExtraData EnemyExtraData;
 }
 
 [Serializable]
@@ -24,4 +24,12 @@ public class EnemyInfor
     public GameObject prefab;
 }
 
+[Serializable]
+public class PowerExtraData
+{
+    public float HP;
+    public float Speed;
+    public float DamgeLeftHand;
+    public float DamgeRightHand;
+}
 

@@ -1,10 +1,13 @@
 using DG.Tweening;
 using System.Collections;
+using System.Xml.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public CharacterData characterData = new(10,0.1f,1,2);
+    public CharacterData characterData = new("Character", 10,0.1f,1,2);
+    public TextMeshPro txtName;
     public Animator animator;
     public HitBox headHitBox;
     public HitBox bellyHitBox;
@@ -16,6 +19,7 @@ public class Character : MonoBehaviour
     public CharacterState characterState = CharacterState.Idle;
     public TeamType teamType;
     private bool isAction;
+    private float currHP;
 
     private void Start()
     {
@@ -30,8 +34,16 @@ public class Character : MonoBehaviour
     }
 
     #region Public Methods
-    public void SetUp(CharacterData data, TeamType _teamType)
+    public void SetUp(string name, PowerExtraData data, TeamType _teamType)
     {
+        txtName.text = name;
+        if(name == "Player")
+            txtName.color = Color.green;
+        else if (teamType == TeamType.Enemy)
+            txtName.color = Color.red;
+        else
+            txtName.color = Color.yellow;
+
         rigidbodyCharacter.isKinematic = false;
         ColliderCharacter.isTrigger = false;
         characterData.HP += data.HP;
@@ -40,6 +52,12 @@ public class Character : MonoBehaviour
         characterData.DamgeLeftHand += data.DamgeLeftHand;
         teamType = _teamType;
         gameObject.tag = teamType.ToString();
+        currHP = characterData.HP;
+
+        if (teamType == TeamType.Ally)
+            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, characterData.HP, characterData.HP, characterData.HP);
+        else
+            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, characterData.HP, characterData.HP, characterData.HP);
     }
 
     public void ControlByDirection(Vector2 dir)
@@ -131,7 +149,7 @@ public class Character : MonoBehaviour
             float damage;
             if (hitBox.CompareTag("RightHand") && hitBox.character.characterState == CharacterState.PunchUppercut)
             {
-                damage = hitBox.character.characterData.DamgeRightHand * (GameConfig.Ins.headDamageRate / 100);
+                damage = hitBox.character.characterData.DamgeRightHand * (1f + GameConfig.Ins.headDamageRate / 100);
                 characterState = CharacterState.HeadHit;
                 hitBox.character.rightHandHitBox.DissableColide();
             }
@@ -225,8 +243,15 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        characterData.HP -= damage;
-        if(characterData.HP <= 0)
+        float oldHP = characterData.HP;
+        currHP -= damage;
+
+        if (teamType == TeamType.Ally)
+            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, characterData.HP, oldHP, currHP);
+        else
+            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, characterData.HP, oldHP, currHP);
+
+        if (currHP <= 0)
         {
             rigidbodyCharacter.isKinematic = true;
             ColliderCharacter.isTrigger = true;
@@ -238,7 +263,7 @@ public class Character : MonoBehaviour
                 gameObject.SetActive(false);
             });
 
-        }    
+        }
     }
 
     #endregion

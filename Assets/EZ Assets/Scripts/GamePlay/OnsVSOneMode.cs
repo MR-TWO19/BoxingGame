@@ -18,13 +18,13 @@ public class OnsVSOneMode : GameModeBase
     {
         GameObject playerPrefab = GameManager.Ins.CharacterList[0];
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(4);
-        CreateCharacter(playerPrefab, posPlayer, GameConfig.Ins.characterDataPlayer, TeamType.Ally, true); // Create player
+        CreateCharacter("Player", playerPrefab, posPlayer, GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true); // Create player
 
         LevelGameData levelGameData = GameModeConfig.Ins.OneVsOneMode.LevelGameData[level - 1];
         for (int i = 0; i < levelGameData.EnemyInfors[0].Quanlity; i++)
         {
             Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(32);
-            CreateCharacter(levelGameData.EnemyInfors[0].prefab, posEnemy, levelGameData.EnemyExtraData, TeamType.Enemy, false); // Create Enemy
+            CreateCharacter($"Enemy {i+1}", levelGameData.EnemyInfors[0].prefab, posEnemy, levelGameData.EnemyExtraData, TeamType.Enemy, false); // Create Enemy
         }
     }
 }
