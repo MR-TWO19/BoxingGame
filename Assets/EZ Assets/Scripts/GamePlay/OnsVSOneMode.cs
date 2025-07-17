@@ -20,7 +20,7 @@ public class OnsVSOneMode : GameModeBase
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(4);
         CreateCharacter("Player", playerPrefab, posPlayer, GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true); // Create player
 
-        LevelGameData levelGameData = GameModeConfig.Ins.OneVsOneMode.LevelGameData[level - 1];
+        LevelGameData levelGameData = GameModeConfig.Ins.OneVsOneMode.LevelGameDatas[level - 1];
         for (int i = 0; i < levelGameData.EnemyInfors[0].Quanlity; i++)
         {
             Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(32);

@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class LevelButon : MonoBehaviour
+{
+    [SerializeField] Button btn;
+    [SerializeField] TextMeshProUGUI txtLevel;
+
+    int level;
+    GameMode gameMode;
+
+    private void Start()
+    {
+        btn.onClick.AddListener(PlayGame);
+    }
+
+    private void PlayGame()
+    {
+        GameManager.Ins.SetUp(level, gameMode);
+    }
+
+    public void SetUp(int level, GameMode gameMode)
+    {
+        txtLevel.text = level.ToString();
+        this.gameMode = gameMode;
+        this.level = level;
+        gameObject.SetActive(true);
+    }
+
+
+}

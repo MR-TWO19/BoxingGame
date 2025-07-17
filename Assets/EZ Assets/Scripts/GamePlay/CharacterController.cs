@@ -122,10 +122,13 @@ public class CharacterController : MonoBehaviour
         if (isAtk)
         {
             botDisable = true;
-            character.BotAttack();
-            DOVirtual.DelayedCall(timeBotDisible, () =>
+            DOVirtual.DelayedCall(1, () =>
             {
-                botDisable = false;
+                character.BotAttack();
+                DOVirtual.DelayedCall(timeBotDisible, () =>
+                {
+                    botDisable = false;
+                });
             });
         }
         else

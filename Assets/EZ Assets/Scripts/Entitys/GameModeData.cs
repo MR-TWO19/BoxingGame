@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class GameModeData 
 {
-    public List<LevelGameData> LevelGameData;
+    public List<LevelGameData> LevelGameDatas;
 }
 
 [Serializable]

@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
 
 public abstract class GameModeBase : IGameModeBase
 {
@@ -20,11 +18,11 @@ public abstract class GameModeBase : IGameModeBase
     {
         GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
         CharacterController controllerCharacter = character.GetComponent<CharacterController>();
-        controllerCharacter.SetUp(name, extraData, team, isPlayer);
         if(team == TeamType.Ally)
            Allys.Add(controllerCharacter);
         else
             Enemys.Add(controllerCharacter);
+        controllerCharacter.SetUp(name, extraData, team, isPlayer);
     }
 
     public void AllyDead(Character character)

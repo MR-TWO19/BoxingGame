@@ -102,7 +102,10 @@ public class Character : MonoBehaviour
     {
         if (isAction) return;
         animator.SetBool("Move", false);
-        Attack(CharacterState.PunchStraight);
+        DOVirtual.DelayedCall(1, () =>
+        {
+            Attack(CharacterState.PunchStraight);
+        });
 
     }
 
@@ -246,11 +249,6 @@ public class Character : MonoBehaviour
         float oldHP = characterData.HP;
         currHP -= damage;
 
-        if (teamType == TeamType.Ally)
-            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, characterData.HP, oldHP, currHP);
-        else
-            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, characterData.HP, oldHP, currHP);
-
         if (currHP <= 0)
         {
             rigidbodyCharacter.isKinematic = true;
@@ -262,8 +260,15 @@ public class Character : MonoBehaviour
             {
                 gameObject.SetActive(false);
             });
-
+            if (teamType == TeamType.Ally)
+                GameManager.Ins.GameMove.AllyDead(this);
+            else
+                GameManager.Ins.GameMove.EnemyDead(this);
         }
+        if (teamType == TeamType.Ally)
+            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, characterData.HP, oldHP, currHP);
+        else
+            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, characterData.HP, oldHP, currHP);
     }
 
     #endregion
