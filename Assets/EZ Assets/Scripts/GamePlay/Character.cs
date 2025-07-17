@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class Character : MonoBehaviour
     public TeamType teamType;
     private bool isAction;
     private float currHP;
+    private List<CharacterState> useSkills = new();
 
     private void Start()
     {
@@ -35,10 +37,13 @@ public class Character : MonoBehaviour
     }
 
     #region Public Methods
-    public void SetUp(string name, PowerExtraData data, TeamType _teamType)
+    public void SetUp(string name, PowerExtraData data, TeamType _teamType, List<CharacterState> useSkills)
     {
         txtName.text = name;
-        if(name == "Player")
+        teamType = _teamType;
+        this.useSkills.Clear();
+        this.useSkills.AddRange(useSkills);
+        if (name == "Player")
             txtName.color = Color.green;
         else if (teamType == TeamType.Enemy)
             txtName.color = Color.red;
@@ -54,7 +59,6 @@ public class Character : MonoBehaviour
         CurCharacterData.Speed += data.Speed;
         CurCharacterData.DamgeRightHand += data.DamgeRightHand;
         CurCharacterData.DamgeLeftHand += data.DamgeLeftHand;
-        teamType = _teamType;
         gameObject.tag = teamType.ToString();
         currHP = CurCharacterData.HP;
 
@@ -108,7 +112,8 @@ public class Character : MonoBehaviour
     {
         if (isAction) return;
         animator.SetBool("Move", false);
-        Attack(CharacterState.PunchStraight);
+        int idx = Random.Range(0, useSkills.Count);
+        Attack(useSkills[idx]);
 
     }
 

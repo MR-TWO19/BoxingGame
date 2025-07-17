@@ -32,6 +32,7 @@ public class GameManager : SingletonMono<GameManager>
                 GameMove = new OnsVSManyMode();
                 break;
             case GameMode.ManeyVsMany:
+                GameMove = new ManyVSManyMode();
                 break;
             default:
                 break;  

@@ -56,7 +56,7 @@ public class CharacterController : MonoBehaviour
         }    
     }
 
-    public void SetUp(string name, PowerExtraData extraData, TeamType teamType, bool isPlayer)
+    public void SetUp(string name, PowerExtraData extraData, TeamType teamType, bool isPlayer, List<CharacterState> useSkills)
     {
         isActive = false;
         if (isPlayer)
@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour
             CameraManager.Ins.SetUpCammeraFollow(gameObject);
         }
         isBot = !isPlayer;
-        character.SetUp(name, extraData, teamType);
+        character.SetUp(name, extraData, teamType, useSkills);
     }
 
     public void Active()

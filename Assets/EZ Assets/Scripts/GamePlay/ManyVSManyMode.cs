@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnsVSManyMode : GameModeBase
+public class ManyVSManyMode : GameModeBase
 {
-    List<int> randomRemove = new(); 
+    List<int> randomRemove = new();
 
     public override void PlayGame()
     {
@@ -19,9 +19,11 @@ public class OnsVSManyMode : GameModeBase
     public override void SetUpGame(int level)
     {
         randomRemove.Clear();
-        GameObject playerPrefab = GameManager.Ins.CharacterList[0];
-        Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(2);
-        CreateCharacter("Player", playerPrefab, posPlayer, GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true, new()); // Create player
+        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2), GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true, new()); // Create player
+        CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), GameConfig.Ins.PowerExtraDataAlly, TeamType.Ally, false, GameConfig.Ins.useSkillAllys); // Create Ally
+        CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), GameConfig.Ins.PowerExtraDataAlly, TeamType.Ally, false, GameConfig.Ins.useSkillAllys); // Create Ally
+
+
 
         LevelGameData levelGameData = GameModeConfig.Ins.OneVsManyMode.LevelGameDatas[level - 1];
 

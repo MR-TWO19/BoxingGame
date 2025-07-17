@@ -15,7 +15,7 @@ public abstract class GameModeBase : IGameModeBase
 
     public abstract void SetUpGame(int level);
 
-    public void CreateCharacter(string name, GameObject playerPrefab, Transform posTran, PowerExtraData extraData, TeamType team, bool isPlayer) 
+    public void CreateCharacter(string name, GameObject playerPrefab, Transform posTran, PowerExtraData extraData, TeamType team, bool isPlayer, List<CharacterState> useSkills) 
     {
         GameObject character = ObjectPoolManager.Ins.GetObject(playerPrefab.name, playerPrefab);
         //GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
@@ -26,7 +26,7 @@ public abstract class GameModeBase : IGameModeBase
            Allys.Add(controllerCharacter);
         else
             Enemys.Add(controllerCharacter);
-        controllerCharacter.SetUp(name, extraData, team, isPlayer);
+        controllerCharacter.SetUp(name, extraData, team, isPlayer, useSkills);
     }
 
     public void AllyDead(Character character)
