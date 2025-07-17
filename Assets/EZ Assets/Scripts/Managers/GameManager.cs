@@ -29,7 +29,7 @@ public class GameManager : SingletonMono<GameManager>
                 GameMove = new OnsVSOneMode();
                 break;
             case GameMode.OneVSMany:
-                GameMove = new OnsVSOneMode();
+                GameMove = new OnsVSManyMode();
                 break;
             case GameMode.ManeyVsMany:
                 break;

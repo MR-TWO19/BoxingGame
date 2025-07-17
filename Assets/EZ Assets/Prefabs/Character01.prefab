@@ -1945,7 +1945,7 @@ GameObject:
   - component: {fileID: 3131999694410693189}
   - component: {fileID: 2932614009355469585}
   m_Layer: 0
-  m_Name: charMobLA_01
+  m_Name: Character01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

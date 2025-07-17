@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 7905174323926392977}
   - component: {fileID: 1943187249992631569}
   m_Layer: 0
-  m_Name: CharBoss_01
+  m_Name: Character02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

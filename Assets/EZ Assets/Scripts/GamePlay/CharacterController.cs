@@ -89,11 +89,6 @@ public class CharacterController : MonoBehaviour
         {
             objTarget = FindClosestTarget(Characters).character;
             yield return new WaitForSeconds(5f);
-            botDisable = true;
-            if(!character.IsKnockedOut())
-                character.BotDisible();
-            yield return new WaitForSeconds(1f);
-            botDisable = false;
         }
     }
 

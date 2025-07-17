@@ -62,6 +62,8 @@ public class Character : MonoBehaviour
             UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
         else
             UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
+
+        characterState = CharacterState.Idle;
     }
 
     public void ControlByDirection(Vector2 dir)
