@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     public HitBox bellyHitBox;
     public HandHitBox rightHandHitBox;
     public HandHitBox leftHandHitBox;
+    public Rigidbody  rigidbodyCharacter;
+    public Collider  ColliderCharacter;
 
     public CharacterState characterState = CharacterState.Idle;
     public TeamType teamType;
@@ -30,6 +32,8 @@ public class Character : MonoBehaviour
     #region Public Methods
     public void SetUp(CharacterData data, TeamType _teamType)
     {
+        rigidbodyCharacter.isKinematic = false;
+        ColliderCharacter.isTrigger = false;
         characterData.HP += data.HP;
         characterData.Speed += data.Speed;
         characterData.DamgeRightHand += data.DamgeRightHand;
@@ -150,13 +154,13 @@ public class Character : MonoBehaviour
             float damage;
             if (hitBox.CompareTag("LeftHand") && hitBox.character.characterState == CharacterState.PunchLeft)
             {
-                damage = hitBox.character.characterData.DamgeLeftHand * (GameConfig.Ins.bellyRate / 100);
+                damage =  hitBox.character.characterData.DamgeLeftHand * (1f + (float)GameConfig.Ins.bellyRate / 100);
                 characterState = CharacterState.KidneyHitLeft;
                 hitBox.character.leftHandHitBox.DissableColide();
             }
             else if (hitBox.CompareTag("RightHand") && hitBox.character.characterState == CharacterState.PunchRight)
             {
-                damage = hitBox.character.characterData.DamgeRightHand * (GameConfig.Ins.bellyRate / 100);
+                damage = hitBox.character.characterData.DamgeRightHand * (1f + ((float)GameConfig.Ins.bellyRate / 100));
                 characterState = CharacterState.KidneyHitRight;
                 hitBox.character.rightHandHitBox.DissableColide();
             }
@@ -224,6 +228,8 @@ public class Character : MonoBehaviour
         characterData.HP -= damage;
         if(characterData.HP <= 0)
         {
+            rigidbodyCharacter.isKinematic = true;
+            ColliderCharacter.isTrigger = true;
             characterState = CharacterState.KnockedOut;
             animator.SetTrigger(characterState.ToString());
             float duration = GetClipDuration(characterState.ToString()) + 2;

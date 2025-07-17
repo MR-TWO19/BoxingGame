@@ -1,17 +1,32 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : SingletonMono<GameManager>
 {
-    public List<GameObject> PosCharacters;
+    public PosCharacters PosEnemys;
+    public PosCharacters PosAllys;
 
-    public void PlayGame(GameMode gameMode)
+    public List<GameObject> CharacterList;
+
+    public IGameModeBase GameMove;
+
+    private void Start()
+    {
+        SetUp(GameMode.OneVSOne);
+        DOVirtual.DelayedCall(3, () =>
+        {
+            PlayGame();
+        });
+    }
+
+    public void SetUp(GameMode gameMode)
     {
         switch (gameMode)
         {
             case GameMode.OneVSOne:
-                PlayModeOneVSOne();
+                GameMove = new OnsVSOneMode();
                 break;
             case GameMode.OneVSMany:
                 break;
@@ -20,10 +35,13 @@ public class GameManager : SingletonMono<GameManager>
             default:
                 break;  
         }
+
+        GameMove.SetUpGame(1);
     }
 
-    private void PlayModeOneVSOne()
+    public void PlayGame()
     {
-
+        GameMove.PlayGame();
     }
+
 }

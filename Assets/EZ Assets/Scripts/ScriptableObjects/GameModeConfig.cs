@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ModeGameConfig", menuName = "Config/ModeGameConfig")]
-public class ModeGameConfig : ScriptableObjectBase<ModeGameConfig>
+[CreateAssetMenu(fileName = "GameModeConfig", menuName = "Config/GameModeConfig")]
+public class GameModeConfig : ScriptableObjectBase<GameModeConfig>
 {
     public GameModeData OneVsOneMode;
     public GameModeData OneVsManyMode;

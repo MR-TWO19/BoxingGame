@@ -2056,14 +2056,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData:
     HP: 10
-    Speed: 1
+    Speed: 0.1
     DamgeLeftHand: 1
-    DamgeRightHand: 2
+    DamgeRightHand: 1
   animator: {fileID: 4161141258026543193}
   headHitBox: {fileID: 4410494201026718091}
   bellyHitBox: {fileID: 4973973477891566500}
   rightHandHitBox: {fileID: 4393504424288322303}
   leftHandHitBox: {fileID: 3578825460289351110}
+  rigidbodyCharacter: {fileID: 8468256164475879245}
+  ColliderCharacter: {fileID: 2932614009355469585}
   characterState: 0
   teamType: 1
 --- !u!136 &2932614009355469585

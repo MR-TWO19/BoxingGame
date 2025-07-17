@@ -13,7 +13,7 @@ public class LevelGameData
 {
     public List<CharacterState> UseSkills;
     public int DodgeRate;
-    public EnemyInfor EnemyInfor;
+    public List<EnemyInfor> EnemyInfors;
     public CharacterData EnemyExtraData;
 }
 

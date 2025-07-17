@@ -1,25 +1,22 @@
 using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private Character character;
     private Character objTarget;
+    private bool isActive;
     private bool isBot;
     private bool botDisable;
     private bool isAtk;
     private float timeBotDisible = 5;
     private void Awake() => character = GetComponent<Character>();
 
-    private void Start()
-    {
-        if (isBot) return;
-
-    }
-
     void Update()
     {
-        if(character.IsKnockedOut()) return;
+        if(character.IsKnockedOut() || !isActive) return;
 
         if (!isBot)
         {
@@ -33,7 +30,7 @@ public class CharacterController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (!isBot || character.IsKnockedOut()) return;
+        if (!isBot || character.IsKnockedOut() || !isActive) return;
         if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Ally") ||
             collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enemy"))
         {
@@ -43,7 +40,7 @@ public class CharacterController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!isBot || character.IsKnockedOut()) return;
+        if (!isBot || character.IsKnockedOut() || !isActive) return;
         if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Ally") ||
             collision.gameObject.CompareTag("Ally") && gameObject.CompareTag("Enemy"))
         {
@@ -61,6 +58,7 @@ public class CharacterController : MonoBehaviour
 
     public void SetUp(CharacterData characterData, TeamType teamType, bool isPlayer)
     {
+        isActive = false;
         if (isPlayer)
         {
             SwipeDetector.Ins.OnSwipeUp.AddListener(() => character.Attack(CharacterState.PunchUppercut));
@@ -68,9 +66,53 @@ public class CharacterController : MonoBehaviour
             SwipeDetector.Ins.OnSwipeLeft.AddListener(() => character.Attack(CharacterState.PunchLeft));
             SwipeDetector.Ins.OnSwipeRight.AddListener(() => character.Attack(CharacterState.PunchRight));
             SwipeDetector.Ins.OnSwipeClick.AddListener(() => character.Attack(CharacterState.PunchStraight));
+            CameraManager.Ins.SetUpCammeraFollow(gameObject);
         }
         isBot = !isPlayer;
         character.SetUp(characterData, teamType);
+    }
+
+    public void Active()
+    {
+        isActive = true;
+
+        if(isBot)
+        {
+            StartCoroutine(UpdateTagert());
+        }    
+    }
+
+    IEnumerator UpdateTagert()
+    {
+        List<CharacterController> Characters = character.teamType == TeamType.Enemy ? GameManager.Ins.GameMove.Allys : GameManager.Ins.GameMove.Enemys;
+        while (true)
+        {
+            objTarget = FindClosestTarget(Characters).character;
+            yield return new WaitForSeconds(5f);
+            botDisable = true;
+            if(!character.IsKnockedOut())
+                character.BotDisible();
+            yield return new WaitForSeconds(1f);
+            botDisable = false;
+        }
+    }
+
+    public CharacterController FindClosestTarget(List<CharacterController> targets)
+    {
+        CharacterController closest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (var obj in targets)
+        {
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                closest = obj;
+            }
+        }
+
+        return closest;
     }
 
     private void BotHandler()

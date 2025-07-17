@@ -13,20 +13,19 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   characterDataPlayer:
-    Head: 100
-    Speed: 1
+    HP: 40
+    Speed: 0.2
     DamgeLeftHand: 10
     DamgeRightHand: 20
   characterDataAlly:
-    Head: 50
+    HP: 0
     Speed: 0.8
     DamgeLeftHand: 10
     DamgeRightHand: 20
-  characterDataEnamy:
-    Head: 30
-    Speed: 0.3
-    DamgeLeftHand: 5
-    DamgeRightHand: 10
+  characterDataEnemy:
+    HP: 0
+    Speed: 0
+    DamgeLeftHand: 0
+    DamgeRightHand: 0
   headDamageRate: 10
-  leftBellyRate: 5
-  rightBellyRate: 5
+  bellyRate: 5
