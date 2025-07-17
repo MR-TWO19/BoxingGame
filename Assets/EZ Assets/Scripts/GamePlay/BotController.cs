@@ -13,7 +13,7 @@ public class BotController : MonoBehaviour
         if (!isAtk)
         {
             character.animator.SetBool("Move", true);
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, character.characterData.Speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, character.CurCharacterData.Speed * Time.deltaTime);
             transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
         }
         else

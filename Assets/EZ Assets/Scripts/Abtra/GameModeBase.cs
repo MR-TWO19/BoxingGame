@@ -17,7 +17,10 @@ public abstract class GameModeBase : IGameModeBase
 
     public void CreateCharacter(string name, GameObject playerPrefab, Transform posTran, PowerExtraData extraData, TeamType team, bool isPlayer) 
     {
-        GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
+        GameObject character = ObjectPoolManager.Ins.GetObject(playerPrefab.name, playerPrefab);
+        //GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
+        character.transform.position = posTran.position;
+        character.transform.rotation = posTran.rotation;
         CharacterController controllerCharacter = character.GetComponent<CharacterController>();
         if(team == TeamType.Ally)
            Allys.Add(controllerCharacter);
@@ -29,9 +32,9 @@ public abstract class GameModeBase : IGameModeBase
     public void AllyDead(Character character)
     {
         Allys.RemoveAll(item => item.character == character);
-        Enemys.ForEach(_ => _.character.Victory());
         if (Allys.Count <= 0)
         {
+            Enemys.ForEach(_ => _.character.Victory());
             Debug.Log("B-- Close");
             ShowResult(false);
             OnCloseEvent?.Invoke();   
@@ -41,9 +44,9 @@ public abstract class GameModeBase : IGameModeBase
     public void EnemyDead(Character character)
     {
         Enemys.RemoveAll(item => item.character == character);
-        Allys.ForEach(_ => _.character.Victory());
         if (Enemys.Count <= 0)
         {
+            Allys.ForEach(_ => _.character.Victory());
             Debug.Log("B-- win");
             ShowResult(true);
             OnWinEvent?.Invoke();
@@ -53,8 +56,7 @@ public abstract class GameModeBase : IGameModeBase
     private void ShowResult(bool isWin) {
         DOVirtual.DelayedCall(5, () =>
         {
-
-        UIManager.Ins.resultPopup.Show(isWin);
+            UIManager.Ins.resultPopup.Show(isWin);
         });
     }
 }

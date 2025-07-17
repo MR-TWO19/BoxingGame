@@ -20,6 +20,7 @@ public class ResultPopup : MonoBehaviour
     private void OnClickOK()
     {
         UIManager.Ins.ResetUI();
+        ObjectPoolManager.Ins.ResetItem();
         Hide();
     }
 

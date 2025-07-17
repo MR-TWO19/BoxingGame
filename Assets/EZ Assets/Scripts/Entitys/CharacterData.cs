@@ -17,4 +17,13 @@ public class CharacterData
         DamgeLeftHand = damgeLeftHand;
         DamgeRightHand = damgeRightHand;
     }
+
+    public CharacterData(CharacterData other)
+    {
+        Name = other.Name;
+        HP = other.HP;
+        Speed = other.Speed;
+        DamgeLeftHand = other.DamgeLeftHand;
+        DamgeRightHand = other.DamgeRightHand;
+    }
 }
