@@ -23,8 +23,6 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(float nomalHp, float oldHp, float curHp)
     {
-        float fill = oldHp / nomalHp;
-        imgFill.DOFillAmount(fill, 0);
         float curFill = curHp / nomalHp;
         imgFill.DOFillAmount(curFill, duration);
     }

@@ -89,7 +89,8 @@ public class CharacterController : MonoBehaviour
         List<CharacterController> Characters = character.teamType == TeamType.Enemy ? GameManager.Ins.GameMove.Allys : GameManager.Ins.GameMove.Enemys;
         while (true)
         {
-            objTarget = FindClosestTarget(Characters).character;
+            CharacterController characterController = FindClosestTarget(Characters);
+            if(characterController) objTarget = characterController.character;
             yield return new WaitForSeconds(5f);
         }
     }
@@ -119,7 +120,7 @@ public class CharacterController : MonoBehaviour
         if (isAtk)
         {
             botDisable = true;
-            character.BotAttack();
+            character.BotAttack(targetPos);
             DOVirtual.DelayedCall(timeBotDisible, () =>
             {
                 botDisable = false;

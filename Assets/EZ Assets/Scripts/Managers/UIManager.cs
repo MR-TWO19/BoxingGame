@@ -26,6 +26,7 @@ public class UIManager : SingletonMono<UIManager>
     {
         mainView.Show();
         levelPopup.Hide();
+        uiGamePlay.ReserUI();
         uiGamePlay.gameObject.SetActive(false);
     }
 }

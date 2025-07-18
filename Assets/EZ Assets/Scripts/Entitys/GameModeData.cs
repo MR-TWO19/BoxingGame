@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class GameModeData 
 {
+    public PowerExtraData PlayerExtraData;
+    public PowerExtraData AllyExtraData;
     public List<LevelGameData> LevelGameDatas;
 }
 

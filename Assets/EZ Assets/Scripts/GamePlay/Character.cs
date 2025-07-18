@@ -108,9 +108,10 @@ public class Character : MonoBehaviour
         transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
     }
 
-    public void BotAttack()
+    public void BotAttack(Vector3 targetPos)
     {
         if (isAction) return;
+        transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
         animator.SetBool("Move", false);
         int idx = Random.Range(0, useSkills.Count);
         Attack(useSkills[idx]);
@@ -259,7 +260,7 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        float oldHP = CurCharacterData.HP;
+        float oldHP = currHP;
         currHP -= damage;
 
         if (currHP <= 0)
