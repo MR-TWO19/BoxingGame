@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class OnsVSOneMode : GameModeBase
 {
@@ -24,7 +25,7 @@ public class OnsVSOneMode : GameModeBase
         for (int i = 0; i < levelGameData.EnemyInfors[0].Quanlity; i++)
         {
             Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(32);
-            CreateCharacter($"Enemy {i+1}", levelGameData.EnemyInfors[0].prefab, posEnemy, levelGameData.EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
+            CreateCharacter($"Enemy {i+1}", levelGameData.EnemyInfors[0].prefab, posEnemy, levelGameData.EnemyInfors[0].EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
         }
     }
 }

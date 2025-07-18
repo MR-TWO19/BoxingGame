@@ -595,10 +595,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginCharacterData:
     Name: Character
-    HP: 10
-    Speed: 0.1
-    DamgeLeftHand: 1
-    DamgeRightHand: 2
+    HP: 0
+    Speed: 0
+    DamgeLeftHand: 0
+    DamgeRightHand: 0
   CurCharacterData:
     Name: 
     HP: 0
@@ -1583,7 +1583,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

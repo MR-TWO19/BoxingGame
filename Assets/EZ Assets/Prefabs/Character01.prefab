@@ -2055,12 +2055,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4a15ba67fcce649a73978e4ca3a8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData:
+  OriginCharacterData:
     Name: Character
-    HP: 10
-    Speed: 0.1
-    DamgeLeftHand: 1
-    DamgeRightHand: 1
+    HP: 0
+    Speed: 0
+    DamgeLeftHand: 0
+    DamgeRightHand: 0
+  CurCharacterData:
+    Name: 
+    HP: 0
+    Speed: 0
+    DamgeLeftHand: 0
+    DamgeRightHand: 0
   txtName: {fileID: 3305093201494931283}
   animator: {fileID: 4161141258026543193}
   headHitBox: {fileID: 4410494201026718091}
