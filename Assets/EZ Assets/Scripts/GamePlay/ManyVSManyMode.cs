@@ -10,7 +10,7 @@ public class ManyVSManyMode : GameModeBase
     public override void PlayGame()
     {
         Allys.ForEach(_ => _.Active());
-        DOVirtual.DelayedCall(1, () =>
+        DOVirtual.DelayedCall(0.2f, () =>
         {
             Enemys.ForEach(_ => _.Active());
         });

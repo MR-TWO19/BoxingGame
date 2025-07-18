@@ -6,7 +6,7 @@ public class OnsVSOneMode : GameModeBase
     public override void PlayGame()
     {
         Allys.ForEach(_ => _.Active());
-        DOVirtual.DelayedCall(3, () =>
+        DOVirtual.DelayedCall(0.2f, () =>
         {
             Enemys.ForEach(_ => _.Active());
         });
