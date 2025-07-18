@@ -59,6 +59,8 @@ public class CharacterController : MonoBehaviour
     public void SetUp(string name, PowerExtraData extraData, TeamType teamType, bool isPlayer, List<CharacterState> useSkills)
     {
         isActive = false;
+        botDisable = false;
+        isAtk = false;
         if (isPlayer)
         {
             SwipeDetector.Ins.OnSwipeUp.AddListener(() => character.Attack(CharacterState.PunchUppercut));

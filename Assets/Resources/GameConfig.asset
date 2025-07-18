@@ -18,10 +18,10 @@ MonoBehaviour:
     DamgeLeftHand: 5
     DamgeRightHand: 10
   PowerExtraDataAlly:
-    HP: 0
-    Speed: 0
-    DamgeLeftHand: 0
-    DamgeRightHand: 0
+    HP: 20
+    Speed: 0.2
+    DamgeLeftHand: 10
+    DamgeRightHand: 5
   useSkillAllys: 02000000030000000400000005000000
   headDamageRate: 50
   bellyRate: 20
