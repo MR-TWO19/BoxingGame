@@ -21,7 +21,7 @@ public class OnsVSManyMode : GameModeBase
         randomRemove.Clear();
         GameObject playerPrefab = GameManager.Ins.CharacterList[0];
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(2);
-        CreateCharacter("Player", playerPrefab, posPlayer, GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true, new()); // Create player
+        CreateCharacter("Player", playerPrefab, posPlayer, GameModeConfig.Ins.OneVsManyMode.PlayerExtraData, TeamType.Ally, true, new()); // Create player
 
         LevelGameData levelGameData = GameModeConfig.Ins.OneVsManyMode.LevelGameDatas[level - 1];
 

@@ -7,6 +7,7 @@ public class GameModeData
 {
     public PowerExtraData PlayerExtraData;
     public PowerExtraData AllyExtraData;
+    public List<CharacterState> useSkillAllys;
     public List<LevelGameData> LevelGameDatas;
 }
 

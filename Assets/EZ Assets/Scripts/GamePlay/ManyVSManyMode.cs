@@ -19,9 +19,12 @@ public class ManyVSManyMode : GameModeBase
     public override void SetUpGame(int level)
     {
         randomRemove.Clear();
-        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2), GameConfig.Ins.PowerExtraDataPlayer, TeamType.Ally, true, new()); // Create player
-        CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), GameConfig.Ins.PowerExtraDataAlly, TeamType.Ally, false, GameConfig.Ins.useSkillAllys); // Create Ally
-        CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), GameConfig.Ins.PowerExtraDataAlly, TeamType.Ally, false, GameConfig.Ins.useSkillAllys); // Create Ally
+        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2), 
+            GameModeConfig.Ins.ManyVsManyMode.PlayerExtraData, TeamType.Ally, true, new()); // Create player
+        CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), 
+            GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
+        CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), 
+            GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
 
 
 
