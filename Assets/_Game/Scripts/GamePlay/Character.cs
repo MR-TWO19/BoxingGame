@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
 
     public void BotAttack(Vector3 targetPos)
     {
-        if (isAction) return;
+        if (isAction || IsDamage()) return;
         transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
         animator.SetBool("Move", false);
         int idx = Random.Range(0, useSkills.Count);
@@ -125,7 +125,7 @@ public class Character : MonoBehaviour
 
     public void Attack(CharacterState state)
     {
-        if (isAction) return;
+        if (isAction || IsDamage()) return;
         isAction = true;
         characterState = state;
         if(characterState == CharacterState.PunchLeft)
@@ -230,6 +230,14 @@ public class Character : MonoBehaviour
                CharacterState.KidneyHitRight or
                CharacterState.StomachHit or
                CharacterState.Dodge;
+    }
+
+    private bool IsDamage()
+    {
+        return characterState is CharacterState.HeadHit or
+               CharacterState.KidneyHitLeft or
+               CharacterState.KidneyHitRight or
+               CharacterState.StomachHit;
     }
 
     private IEnumerator ResetToIdleAfterAnimation(CharacterState state)

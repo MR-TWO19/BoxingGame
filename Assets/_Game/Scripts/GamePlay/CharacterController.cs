@@ -91,7 +91,7 @@ public class CharacterController : MonoBehaviour
         {
             CharacterController characterController = FindClosestTarget(Characters);
             if(characterController) objTarget = characterController.character;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
         }
     }
 
