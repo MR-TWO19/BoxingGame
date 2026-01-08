@@ -52,7 +52,7 @@ public class GameConfigEditorWindow : BaseEditorWindow
     {
         // create view here
         tabContainer.AddTab("Gamne Config", new GameTab());
-        tabContainer.AddTab("Car", new CarTab());
+        tabContainer.AddTab("Character Tab", new CharacterTab());
     }
 
     private void _OnDraw()

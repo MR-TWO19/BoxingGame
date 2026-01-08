@@ -10,19 +10,11 @@ public class GameConfig : ConfigBase<GameConfig>
 
     public UpdareData UpdareData;
 
-    public SkillData QuantitySlotSkill;
-    public SkillData ImmunitySkill;
-    public SkillData ExtraRollSkill;
+    public List<CharacterData> CharaterDatas;
 
-    public SkillData AccelerateSkill;
-    public SkillData KnockbackSkill;
-    public SkillData SlowSkill;
-    public SkillData PowerSkill;
-
-    public List<CarData> CarDatas;
-
-    public CarData GetCar(int id)
+    public CharacterData GetCharacterData(int id)
     {
-        return CarDatas.Find(_ => _.id == id);
+        return CharaterDatas.Find(c => c.id == id);
     }
+
 }

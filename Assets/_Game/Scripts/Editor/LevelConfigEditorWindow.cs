@@ -23,34 +23,35 @@ public class LevelConfigEditorWindow : BaseEditorWindow
 
     #region template
     protected TabContainer tabContainer;
-    protected LevelConfig levelConfig;
+    protected GameModeConfig gameModeConfig;
 
-    protected override Object GetTarget() => LevelConfig.Ins;
+    protected override Object GetTarget() => GameModeConfig.Ins;
 
     protected override void OnEnable()
     {
         base.OnEnable();
         Ins = this;
-        levelConfig = LevelConfig.Ins;
+        gameModeConfig = GameModeConfig.Ins;
         tabContainer = new TabContainer();
         _Init();
     }
 
     protected override void OnDraw()
     {
-        Undo.RecordObject(levelConfig, "Level Config");
+        Undo.RecordObject(gameModeConfig, "Game Mode Config");
 
         _OnDraw();
 
         if (GUI.changed)
-            EditorUtility.SetDirty(LevelConfig.Ins);
+            EditorUtility.SetDirty(GameModeConfig.Ins);
     }
     #endregion
 
     private void _Init()
     {
         // create view here
-        tabContainer.AddTab("Level", new LevelTab());
+        tabContainer.AddTab("One Vs One", new OneVsOneTab());
+        tabContainer.AddTab("One Vs Many", new OneVsManyTab());
     }
 
     private void _OnDraw()

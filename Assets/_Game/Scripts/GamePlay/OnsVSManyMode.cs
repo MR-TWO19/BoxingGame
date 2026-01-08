@@ -32,7 +32,8 @@ public class OnsVSManyMode : GameModeBase
             {
                 idxName++;
                 Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(GetPosRandom());
-                CreateCharacter($"Enemy {idxName}", item.prefab, posEnemy, item.EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
+                GameObject enemyPrefab = GameConfig.Ins.GetCharacterData(item.CharacterID).Prefab;
+                CreateCharacter($"Enemy {idxName}", enemyPrefab, posEnemy, item.EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
             }
         }
 

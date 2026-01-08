@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7a3342e0e97ab42a866320557a91c3, type: 3}
   m_Name: UIDrawerSettings
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: a722a132d3cef2e4794c727aead06849, type: 2}
+  database: {fileID: 11400000, guid: 17b475d746c9d2441a086fdd8cca6dc3, type: 2}
   CloseDirection: 3
   CustomStartAnchoredPosition: {x: 0, y: 0, z: 0}
   BlockBackButton: 1

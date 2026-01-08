@@ -1,9 +1,11 @@
 using System;
+using TwoCore;
+using UnityEngine;
 
 [Serializable]
-public class CharacterData
+public class CharacterData : BaseData
 {
-    public string Name;
+    public GameObject Prefab;
     public float HP = 10;
     public float Speed = 0.1f;
     public float DamgeLeftHand = 1f;
@@ -11,19 +13,21 @@ public class CharacterData
 
     public CharacterData(string name, float hp, float speed, float damgeLeftHand, float damgeRightHand)
     {
-        Name = name;
+        this.name = name;
         HP = hp;
         Speed = speed;
         DamgeLeftHand = damgeLeftHand;
         DamgeRightHand = damgeRightHand;
+        Prefab = null;
     }
 
     public CharacterData(CharacterData other)
     {
-        Name = other.Name;
+        this.name = other.name;
         HP = other.HP;
         Speed = other.Speed;
         DamgeLeftHand = other.DamgeLeftHand;
         DamgeRightHand = other.DamgeRightHand;
+        Prefab = other.Prefab;
     }
 }

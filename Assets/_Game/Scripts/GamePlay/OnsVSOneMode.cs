@@ -22,7 +22,9 @@ public class OnsVSOneMode : GameModeBase
         for (int i = 0; i < levelGameData.EnemyInfors[0].Quanlity; i++)
         {
             Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(32);
-            CreateCharacter($"Enemy {i+1}", levelGameData.EnemyInfors[0].prefab, posEnemy, levelGameData.EnemyInfors[0].EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
+
+            GameObject enemyPrefab = GameConfig.Ins.GetCharacterData(levelGameData.EnemyInfors[i].CharacterID).Prefab;
+            CreateCharacter($"Enemy {i+1}", enemyPrefab, posEnemy, levelGameData.EnemyInfors[0].EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
         }
     }
 }

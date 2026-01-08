@@ -23,7 +23,7 @@ public class LevelGameData
 public class EnemyInfor
 {
     public int Quanlity;
-    public GameObject prefab;
+    public int CharacterID;
     public PowerExtraData EnemyExtraData;
 }
 
