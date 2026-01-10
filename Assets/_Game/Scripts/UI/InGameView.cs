@@ -1,3 +1,4 @@
+using Doozy.Engine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class InGameView : BaseView
 {
+    [SerializeField] UIButton btnSetting;
     [SerializeField] List<HealthBar> healthBarAllys;
     [SerializeField] HealthBar healthBarEnemy;
     [SerializeField] GameObject objTotalEnemy;
@@ -20,6 +22,10 @@ public class InGameView : BaseView
     {
         base.Awake();
         Ins = this;
+        btnSetting.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            SettingPopup.Show(false);
+        });
     }
 
     public void SetUpHelthAlly(string Name, float nomalHp, float oldHp, float curHp)

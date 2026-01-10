@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ public class SwipeDetector : MonoBehaviour
     public float minSwipeDistance = 50f; // pixel
     private Vector2 startPos;
     private bool isSwiping = false;
+    private bool ignoreThisSwipe = false;
 
     [Header("Ignore Area")]
     public RectTransform ignoreArea;
@@ -30,50 +32,58 @@ public class SwipeDetector : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR
+        // In simulator/editor, allow real touch input if present (Device Simulator)
+        if (Input.touchCount > 0)
+            HandleTouchSwipe();
+        else
+            HandleMouseSwipe();
+#elif UNITY_STANDALONE
         HandleMouseSwipe();
 #else
         HandleTouchSwipe();
 #endif
     }
 
-    
-#if UNITY_EDITOR || UNITY_STANDALONE
     void HandleMouseSwipe()
     {
-        int idx = IsUI() ? 1 : 0;
-
-        if (Input.GetMouseButtonDown(idx))
+        if (Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
             isSwiping = true;
+            ignoreThisSwipe = IsUI_Mouse(startPos) || IsInIgnoreArea(startPos);
         }
-        else if (Input.GetMouseButtonUp(idx) && isSwiping)
+        else if (Input.GetMouseButtonUp(0) && isSwiping)
         {
-            DetectSwipe(Input.mousePosition);
+            if (!ignoreThisSwipe)
+                DetectSwipe(Input.mousePosition);
+
             isSwiping = false;
+            ignoreThisSwipe = false;
         }
     }
-#else
+
     void HandleTouchSwipe()
     {
         if (Input.touchCount == 0) return;
 
-        int idx = IsUI() ? 1 : 0;
-        Touch touch = Input.GetTouch(idx);
+        Touch touch = Input.GetTouch(0);
+
         if (touch.phase == TouchPhase.Began)
         {
-
             startPos = touch.position;
             isSwiping = true;
+            ignoreThisSwipe = IsUI_Touch(touch.fingerId) || IsInIgnoreArea(startPos);
         }
         else if (touch.phase == TouchPhase.Ended && isSwiping)
         {
-            DetectSwipe(touch.position);
+            if (!ignoreThisSwipe)
+                DetectSwipe(touch.position);
+
             isSwiping = false;
+            ignoreThisSwipe = false;
         }
     }
-#endif
 
     void DetectSwipe(Vector2 endPos)
     {
@@ -113,19 +123,29 @@ public class SwipeDetector : MonoBehaviour
         }
     }
 
-    private bool IsUI()
+    private bool IsInIgnoreArea(Vector2 screenPos)
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (ignoreArea == null) return false;
+        return RectTransformUtility.RectangleContainsScreenPoint(ignoreArea, screenPos);
+    }
+
+    private bool IsUI_Touch(int fingerId)
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId);
+    }
+
+    // More reliable for mouse in editor/standalone than IsPointerOverGameObject() without id
+    private bool IsUI_Mouse(Vector2 screenPos)
+    {
+        if (EventSystem.current == null) return false;
+
+        var eventData = new PointerEventData(EventSystem.current)
         {
-            return true;
-        }
-#else
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-        {
-            return true;
-        }
-#endif
-        return false;
+            position = screenPos
+        };
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results != null && results.Count > 0;
     }
 }

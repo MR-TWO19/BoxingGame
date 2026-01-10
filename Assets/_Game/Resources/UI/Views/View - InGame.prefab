@@ -1563,7 +1563,7 @@ GameObject:
   - component: {fileID: 3633871268188170602}
   - component: {fileID: 1879139458781547950}
   - component: {fileID: 8530357339439926418}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BtnSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4229,7 +4229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9139931466115554140}
   - component: {fileID: 4897637600684525290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4359,7 +4359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286279167272919158}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4401,7 +4401,7 @@ GameObject:
   - component: {fileID: 333258288923187503}
   - component: {fileID: 1358844535784588639}
   - component: {fileID: 2866743104940350642}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View - InGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4941,6 +4941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a69a57457a66ef429d708ed4fd056fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnSetting: {fileID: 8530357339439926418}
   healthBarAllys:
   - {fileID: 1370450253063913262}
   - {fileID: 2133365641622539442}

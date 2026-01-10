@@ -16,7 +16,7 @@ public class MainView : BaseView
         base.Awake();
         btnSetting.OnClick.OnTrigger.Event.AddListener(() =>
         {
-            SettingPopup.Show();
+            SettingPopup.Show(true);
         });
 
         btnHowToPlay.OnClick.OnTrigger.Event.AddListener(() =>
@@ -30,7 +30,7 @@ public class MainView : BaseView
 
         btnChallenge.OnClick.OnTrigger.Event.AddListener(() =>
         {
-            HowToPlayPopup.Show();
+            PlayPopup.Show(GameMode.OneVSMany);
         });
         btnUpgrade.OnClick.OnTrigger.Event.AddListener(() =>
         {
