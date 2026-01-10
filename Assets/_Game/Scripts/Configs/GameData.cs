@@ -5,8 +5,10 @@ using UnityEngine;
 [Serializable]
 public class UpdareData
 {
+    public InfoUpdare HP;
     public InfoUpdare Speed;
-    public InfoUpdare TimeCountdown;
+    public InfoUpdare LATK;
+    public InfoUpdare RATK;
 }
 
 [Serializable]

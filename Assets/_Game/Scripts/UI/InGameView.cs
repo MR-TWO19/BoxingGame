@@ -28,6 +28,12 @@ public class InGameView : BaseView
         });
     }
 
+    protected override void OnShow()
+    {
+        base.OnShow();
+        GameManager.Ins.LoadGame();
+    }
+
     public void SetUpHelthAlly(string Name, float nomalHp, float oldHp, float curHp)
     {
         if (Name == "Player")

@@ -24,6 +24,9 @@ public class Character : MonoBehaviour
     private float currHP;
     private List<CharacterState> useSkills = new();
 
+    int _resetToIdleVersion;
+    Coroutine _resetToIdleCoroutine;
+
     private void Start()
     {
         headHitBox.character = this;
@@ -134,7 +137,7 @@ public class Character : MonoBehaviour
             rightHandHitBox.EnabledColide();
 
         animator.SetTrigger(state.ToString());
-        StartCoroutine(ResetToIdleAfterAnimation(state));
+        StartResetToIdle(state);
     }
 
     public void Dodge()
@@ -143,7 +146,7 @@ public class Character : MonoBehaviour
         isAction = true;
         characterState = CharacterState.Dodge;
         animator.SetTrigger("Dodge");
-        StartCoroutine(ResetToIdleAfterAnimation(CharacterState.Dodge));
+        StartResetToIdle(CharacterState.Dodge);
     }
 
     public void Victory()
@@ -177,7 +180,7 @@ public class Character : MonoBehaviour
 
             TakeDamage(damage);
             animator.SetTrigger(characterState.ToString());
-            StartCoroutine(ResetToIdleAfterAnimation(characterState));
+            StartResetToIdle(characterState);
         }
     }
 
@@ -212,7 +215,7 @@ public class Character : MonoBehaviour
 
             TakeDamage(damage);
             animator.SetTrigger(characterState.ToString());
-            StartCoroutine(ResetToIdleAfterAnimation(characterState));
+            StartResetToIdle(characterState);
         }
     }
     #endregion
@@ -240,14 +243,24 @@ public class Character : MonoBehaviour
                CharacterState.StomachHit;
     }
 
-    private IEnumerator ResetToIdleAfterAnimation(CharacterState state)
+    void StartResetToIdle(CharacterState state)
+    {
+        _resetToIdleVersion++;
+        if (_resetToIdleCoroutine != null) StopCoroutine(_resetToIdleCoroutine);
+        _resetToIdleCoroutine = StartCoroutine(ResetToIdleAfterAnimation(state, _resetToIdleVersion));
+    }
+
+    private IEnumerator ResetToIdleAfterAnimation(CharacterState state, int version)
     {
         string clipName = (state == CharacterState.KidneyHitLeft || state == CharacterState.KidneyHitRight) ? "KidneyHit" : state.ToString();
         float duration = GetClipDuration(clipName);
         yield return new WaitForSeconds(duration);
+
+        if (version != _resetToIdleVersion) yield break;
+        _resetToIdleCoroutine = null;
+
         isAction = false;
-        if (!IsKnockedOut())
-        {
+        if (!IsKnockedOut()) {
             characterState = CharacterState.Idle;
             animator.SetTrigger("Idle");
         }

@@ -12,6 +12,8 @@ public class GameManager : SingletonMono<GameManager>
     public List<GameObject> CharacterList;
     public IGameModeBase GameMove;
 
+    private int currLevel;
+
     private void Update()
     {
         if (GameMove != null)
@@ -21,39 +23,39 @@ public class GameManager : SingletonMono<GameManager>
         }    
     }
 
-    public void LoadGame(int Level, GameMode gameMode)
+    public void SetUpGame(int Level, GameMode gameMode)
     {
         GameModeEnum = gameMode;
+        currLevel = Level;
 
         PlayPopup.HidePopup();
 
         GameEventMessage.SendEvent("GoToInGame", null);
 
-        DOVirtual.DelayedCall(0.1f, () =>
+    }
+
+    public void LoadGame()
+    {
+        switch (GameModeEnum)
         {
-            switch (gameMode)
-            {
-                case GameMode.OneVSOne:
-                    GameMove = new OnsVSOneMode();
-                    break;
-                case GameMode.OneVSMany:
-                    GameMove = new OnsVSManyMode();
-                    break;
-                case GameMode.ManeyVsMany:
-                    GameMove = new ManyVSManyMode();
-                    break;
-                default:
-                    break;
-            }
+            case GameMode.OneVSOne:
+                GameMove = new OnsVSOneMode();
+                break;
+            case GameMode.OneVSMany:
+                GameMove = new OnsVSManyMode();
+                break;
+            case GameMode.ManeyVsMany:
+                GameMove = new ManyVSManyMode();
+                break;
+            default:
+                break;
+        }
 
-            GameMove.SetUpGame(Level);
-            DOVirtual.DelayedCall(1, () =>
-            {
-                PlayGame();
-            });
+        GameMove.SetUpGame(currLevel);
+        DOVirtual.DelayedCall(1, () =>
+        {
+            PlayGame();
         });
-
-
     }
 
     public void PlayGame()

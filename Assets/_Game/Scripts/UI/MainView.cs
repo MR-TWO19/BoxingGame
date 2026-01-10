@@ -34,7 +34,7 @@ public class MainView : BaseView
         });
         btnUpgrade.OnClick.OnTrigger.Event.AddListener(() =>
         {
-            HowToPlayPopup.Show();
+            UpgradePopup.Show();
         });
     }
 

@@ -21,7 +21,7 @@ public class LevelButon : MonoBehaviour
 
     private void PlayGame()
     {
-        GameManager.Ins.LoadGame(level, gameMode);
+        GameManager.Ins.SetUpGame(level, gameMode);
     }
 
     public void SetUp(int level, GameMode gameMode)

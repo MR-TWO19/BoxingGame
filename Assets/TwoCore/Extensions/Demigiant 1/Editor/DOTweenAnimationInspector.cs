@@ -244,7 +244,9 @@ namespace DG.DOTweenEditor
             }
 
             Undo.RecordObject(_src, "DOTween Animation");
-            Undo.RecordObject(_settings, "DOTween Animation");
+            if (_settings != null) {
+                Undo.RecordObject(_settings, "DOTween Animation");
+            }
 
 //            _src.isValid = Validate(); // Moved down
 
@@ -255,30 +257,46 @@ namespace DG.DOTweenEditor
                 DeGUILayout.Toolbar("Edit Mode Commands");
                 DeGUILayout.BeginVBox(DeGUI.styles.box.stickyTop);
                     GUILayout.BeginHorizontal();
-                    if (GUILayout.Button("TogglePause")) _src.tween.TogglePause();
-                    if (GUILayout.Button("Rewind")) _src.tween.Rewind();
-                    if (GUILayout.Button("Restart")) _src.tween.Restart();
+                    GUI.enabled = _src.tween != null;
+                    if (GUILayout.Button("TogglePause")) {
+                        if (_src.tween != null) _src.tween.TogglePause();
+                    }
+                    if (GUILayout.Button("Rewind")) {
+                        if (_src.tween != null) _src.tween.Rewind();
+                    }
+                    if (GUILayout.Button("Restart")) {
+                        if (_src.tween != null) _src.tween.Restart();
+                    }
+                    GUI.enabled = true;
                     GUILayout.EndHorizontal();
                     if (GUILayout.Button("Commit changes and restart")) {
-                        _src.tween.Rewind();
-                        _src.tween.Kill();
+                        if (_src.tween != null) {
+                            _src.tween.Rewind();
+                            _src.tween.Kill();
+                        }
                         if (_src.isValid) {
                             _src.CreateTween();
-                            _src.tween.Play();
+                            if (_src.tween != null) _src.tween.Play();
                         }
+                    }
+                    if (_src.tween == null) {
+                        GUILayout.Space(4);
+                        EditorGUILayout.HelpBox("Tween is not created. Click 'Commit changes and restart' to create it.", MessageType.Warning);
                     }
                     GUILayout.Label("To apply your changes when exiting Play mode, use the Component's upper right menu and choose \"Copy Component\", then \"Paste Component Values\" after exiting Play mode", DeGUI.styles.label.wordwrap);
                 DeGUILayout.EndVBox();
             } else {
                 GUILayout.BeginHorizontal();
                 bool hasManager = _src.GetComponent<DOTweenVisualManager>() != null;
-                EditorGUI.BeginChangeCheck();
-                _settings.showPreviewPanel = hasManager
-                    ? DeGUILayout.ToggleButton(_settings.showPreviewPanel, "Preview Controls", styles.custom.inlineToggle)
-                    : DeGUILayout.ToggleButton(_settings.showPreviewPanel, "Preview Controls", styles.custom.inlineToggle, GUILayout.Width(120));
-                if (EditorGUI.EndChangeCheck()) {
-                    EditorUtility.SetDirty(_settings);
-                    DOTweenPreviewManager.StopAllPreviews();
+                if (_settings != null) {
+                    EditorGUI.BeginChangeCheck();
+                    _settings.showPreviewPanel = hasManager
+                        ? DeGUILayout.ToggleButton(_settings.showPreviewPanel, "Preview Controls", styles.custom.inlineToggle)
+                        : DeGUILayout.ToggleButton(_settings.showPreviewPanel, "Preview Controls", styles.custom.inlineToggle, GUILayout.Width(120));
+                    if (EditorGUI.EndChangeCheck()) {
+                        EditorUtility.SetDirty(_settings);
+                        DOTweenPreviewManager.StopAllPreviews();
+                    }
                 }
                 if (!hasManager) {
                     if (GUILayout.Button(new GUIContent("Add Manager", "Adds a manager component which allows you to choose additional options for this gameObject"))) {
@@ -289,7 +307,7 @@ namespace DG.DOTweenEditor
             }
 
             // Preview in editor
-            bool isPreviewing = _settings.showPreviewPanel ? DOTweenPreviewManager.PreviewGUI(_src) : false;
+            bool isPreviewing = (_settings != null && _settings.showPreviewPanel) ? DOTweenPreviewManager.PreviewGUI(_src) : false;
 
             EditorGUI.BeginDisabledGroup(isPreviewing);
             // Choose target

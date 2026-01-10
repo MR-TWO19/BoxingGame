@@ -15,10 +15,16 @@ MonoBehaviour:
   headDamageRate: 0
   bellyRate: 0
   UpdareData:
+    HP:
+      value: 0
+      Price: 0
     Speed:
       value: 0
       Price: 0
-    TimeCountdown:
+    LATK:
+      value: 0
+      Price: 0
+    RATK:
       value: 0
       Price: 0
   CharaterDatas:
