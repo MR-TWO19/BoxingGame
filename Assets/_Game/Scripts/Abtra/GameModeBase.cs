@@ -56,7 +56,7 @@ public abstract class GameModeBase : IGameModeBase
     private void ShowResult(bool isWin) {
         DOVirtual.DelayedCall(5, () =>
         {
-            UIManager.Ins.resultPopup.Show(isWin);
+            //UIManager.Ins.resultPopup.Show(isWin);
         });
     }
 }

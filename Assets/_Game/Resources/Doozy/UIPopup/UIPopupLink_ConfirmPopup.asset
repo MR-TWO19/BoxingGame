@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_ConfirmPopup
   m_EditorClassIdentifier: 
   PopupName: ConfirmPopup
-  Prefab: {fileID: 7096658934939218478, guid: f5e6f37e6e22fcf4d94ac83768862a0e, type: 3}
+  Prefab: {fileID: 7096658934939218478, guid: 49557c03bf06d6a47b31e1de7c00cf47, type: 3}

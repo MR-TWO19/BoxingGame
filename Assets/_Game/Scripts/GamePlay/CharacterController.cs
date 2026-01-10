@@ -20,7 +20,7 @@ public class CharacterController : MonoBehaviour
 
         if (!isBot)
         {
-           if(UIManager.Ins.joystick) character.ControlByDirection(UIManager.Ins.joystick.Direction());
+           if(InGameView.Ins.Joystick) character.ControlByDirection(InGameView.Ins.Joystick.Direction());
         }
         else
         {

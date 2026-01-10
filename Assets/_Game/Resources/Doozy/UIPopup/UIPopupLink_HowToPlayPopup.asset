@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_HowToPlayPopup
   m_EditorClassIdentifier: 
   PopupName: HowToPlayPopup
-  Prefab: {fileID: 3325017593117631894, guid: cf81de8e3e3384746bcfeeae6aa489dc, type: 3}
+  Prefab: {fileID: 3325017593117631894, guid: 5e48196f3d407314a9f39a9dd561414f, type: 3}

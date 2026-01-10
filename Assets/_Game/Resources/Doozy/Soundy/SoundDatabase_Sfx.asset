@@ -1,63 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7106076088035963540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: GetCar
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: GetCar
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 2141c83d437d88442911beca2b0dc620, type: 3}
-    Weight: 1
---- !u!114 &-5392315710363384100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Shield
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Shield
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 5e9ea495393349846a955b540e80e64f, type: 3}
-    Weight: 1
 --- !u!114 &-4806662801123169410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +27,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds: []
---- !u!114 &-4184565415903760946
+--- !u!114 &-1106482375762432950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,152 +54,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 9385d1abc34d4664e83df70da6728458, type: 3}
-    Weight: 1
---- !u!114 &-3688306423114597199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: StartCountDown
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: StartCountDown
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0.188
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 11c3edb5ee418d64094f8deb2208b11c, type: 3}
-    Weight: 1
---- !u!114 &-1106482375762432950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: CarEnd
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: CarEnd
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 485ae45e8d1dfe845a130e85d6642339, type: 3}
-    Weight: 1
---- !u!114 &-482350367630393672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Horn
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Horn
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 879b0b935a4e2e340bdddc599def37be, type: 3}
-    Weight: 1
---- !u!114 &-106337429712099571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Boost
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Boost
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: b4d88b6e5cab1fb438b0e144da87fb8f, type: 3}
-    Weight: 1
---- !u!114 &-51635378991318171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Skill02
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Skill02
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: ab4ac5d12b456a54cab6f0b472455691, type: 3}
+  - AudioClip: {fileID: 8300000, guid: 3f03c17413857a546ad2bd4eca65f383, type: 3}
     Weight: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -275,76 +72,25 @@ MonoBehaviour:
   OutputAudioMixerGroup: {fileID: -478643695326687089, guid: d8436dce0a6de524a8c2bf2d5b57f593, type: 2}
   SoundNames:
   - No Sound
-  - Boost
-  - CarEnd
-  - CarIdle
-  - CarRunning
-  - CarStart
   - Click
-  - FlipCoin
-  - GetCar
-  - GetSkill
-  - Hit01
-  - Hit02
-  - Horn
+  - EndGame
+  - HitMiss
   - Lose
   - No Sound
-  - Shield
-  - Skill01
-  - Skill02
-  - StartCountDown
-  - Upgrade
+  - Punch
+  - ReactPunch
+  - StartGame
   - Win
   Database:
   - {fileID: -4806662801123169410}
-  - {fileID: -106337429712099571}
   - {fileID: -1106482375762432950}
   - {fileID: 1949064415742593396}
   - {fileID: 1746500233689860721}
   - {fileID: 9128826884652547495}
   - {fileID: 6431624538746005357}
-  - {fileID: 2252758751610161872}
-  - {fileID: -7106076088035963540}
-  - {fileID: 4565145931120894018}
-  - {fileID: 8331816982595962261}
-  - {fileID: 4590401439028403544}
-  - {fileID: -482350367630393672}
   - {fileID: 1442412794071957471}
-  - {fileID: -5392315710363384100}
-  - {fileID: 476018119219393355}
-  - {fileID: -51635378991318171}
-  - {fileID: -3688306423114597199}
   - {fileID: 8732012061422396490}
-  - {fileID: -4184565415903760946}
---- !u!114 &476018119219393355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Skill01
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Skill01
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 2bf95197969751545a0ee2a6496307b1, type: 3}
-    Weight: 1
+  - {fileID: 5391714036162385580}
 --- !u!114 &1442412794071957471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +118,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 5998c4faa595f64409059c823de84f89, type: 3}
+  - AudioClip: {fileID: 8300000, guid: 3f03c17413857a546ad2bd4eca65f383, type: 3}
     Weight: 1
 --- !u!114 &1746500233689860721
 MonoBehaviour:
@@ -384,10 +130,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: CarRunning
+  m_Name: HitMiss
   m_EditorClassIdentifier: 
   DatabaseName: Sfx
-  SoundName: CarRunning
+  SoundName: HitMiss
   IgnoreListenerPause: 1
   Volume:
     MinValue: -7.4
@@ -396,12 +142,12 @@ MonoBehaviour:
     MinValue: 0
     MaxValue: 0
   SpatialBlend: 0
-  Loop: 1
+  Loop: 0
   Mode: 0
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 22f566a6ec827fc4280b90d0f1a0a33d, type: 3}
+  - AudioClip: {fileID: 8300000, guid: 369a3a408409e1e49a38b59cea9f4f46, type: 3}
     Weight: 1
 --- !u!114 &1949064415742593396
 MonoBehaviour:
@@ -413,39 +159,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: CarIdle
+  m_Name: EndGame
   m_EditorClassIdentifier: 
   DatabaseName: Sfx
-  SoundName: CarIdle
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 1
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 7f6442cdb6934cf4d8c94e538e651545, type: 3}
-    Weight: 1
---- !u!114 &2252758751610161872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: FlipCoin
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: FlipCoin
+  SoundName: EndGame
   IgnoreListenerPause: 1
   Volume:
     MinValue: 0
@@ -459,9 +176,9 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 14dcf288b72168f4794d01289149d67e, type: 3}
+  - AudioClip: {fileID: 8300000, guid: fab1a87c1d230ac469394f29def152e8, type: 3}
     Weight: 1
---- !u!114 &4565145931120894018
+--- !u!114 &5391714036162385580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,10 +188,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: GetSkill
+  m_Name: StartGame
   m_EditorClassIdentifier: 
   DatabaseName: Sfx
-  SoundName: GetSkill
+  SoundName: StartGame
   IgnoreListenerPause: 1
   Volume:
     MinValue: 0
@@ -488,36 +205,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 0c513264f2f8aac4fae25edf1889f22a, type: 3}
-    Weight: 1
---- !u!114 &4590401439028403544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Hit02
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Hit02
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 2a92c672a002aee448c43685f8fa756a, type: 3}
+  - AudioClip: {fileID: 8300000, guid: e46d8a7f16240904ea5aa31395bdda37, type: 3}
     Weight: 1
 --- !u!114 &6431624538746005357
 MonoBehaviour:
@@ -546,36 +234,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 8f37cad87e014884c8eacaf474729e96, type: 3}
-    Weight: 1
---- !u!114 &8331816982595962261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Hit01
-  m_EditorClassIdentifier: 
-  DatabaseName: Sfx
-  SoundName: Hit01
-  IgnoreListenerPause: 1
-  Volume:
-    MinValue: 0
-    MaxValue: 0
-  Pitch:
-    MinValue: 0
-    MaxValue: 0
-  SpatialBlend: 0
-  Loop: 0
-  Mode: 0
-  ResetSequenceAfterInactiveTime: 0
-  SequenceResetTime: 5
-  Sounds:
-  - AudioClip: {fileID: 8300000, guid: 7551c4114c14ba1499aa46d1eab8dfdd, type: 3}
+  - AudioClip: {fileID: 8300000, guid: b511f63dd75bf154f8706fa99071f97c, type: 3}
     Weight: 1
 --- !u!114 &8732012061422396490
 MonoBehaviour:
@@ -587,10 +246,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: Upgrade
+  m_Name: ReactPunch
   m_EditorClassIdentifier: 
   DatabaseName: Sfx
-  SoundName: Upgrade
+  SoundName: ReactPunch
   IgnoreListenerPause: 1
   Volume:
     MinValue: 0
@@ -604,7 +263,7 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 885f2ac6c291f5b40bcdfc023b26a2e6, type: 3}
+  - AudioClip: {fileID: 8300000, guid: 621bbd82f7827984488708107f5df926, type: 3}
     Weight: 1
 --- !u!114 &9128826884652547495
 MonoBehaviour:
@@ -616,10 +275,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6c631d933489d4ca7328a2a5983e10, type: 3}
-  m_Name: CarStart
+  m_Name: Punch
   m_EditorClassIdentifier: 
   DatabaseName: Sfx
-  SoundName: CarStart
+  SoundName: Punch
   IgnoreListenerPause: 1
   Volume:
     MinValue: 0
@@ -633,5 +292,5 @@ MonoBehaviour:
   ResetSequenceAfterInactiveTime: 0
   SequenceResetTime: 5
   Sounds:
-  - AudioClip: {fileID: 8300000, guid: 9a19b20ed064af14daac11c945be836a, type: 3}
+  - AudioClip: {fileID: 8300000, guid: d7770f4decfd19f4ea24485ee017d62e, type: 3}
     Weight: 1

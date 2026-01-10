@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIPopupLink_ResultPopup
   m_EditorClassIdentifier: 
   PopupName: ResultPopup
-  Prefab: {fileID: 7103485736902895461, guid: d34285fc7b7c2a54b933e1d71b4f9738, type: 3}
+  Prefab: {fileID: 7103485736902895461, guid: 88a0390667327914d958a039506aa226, type: 3}

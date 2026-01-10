@@ -1,14 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using TwoCore;
 using UnityEngine;
 
-public class UIGamePlay : MonoBehaviour
+public class InGameView : BaseView
 {
     [SerializeField] List<HealthBar> healthBarAllys;
     [SerializeField] HealthBar healthBarEnemy;
     [SerializeField] GameObject objTotalEnemy;
     [SerializeField] TextMeshProUGUI txtTotalEnemy;
+    [SerializeField] SimpleJoystick joystick;
+
+    public static InGameView Ins { get; private set; }
+
+    public SimpleJoystick Joystick => joystick;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Ins = this;
+    }
 
     public void SetUpHelthAlly(string Name, float nomalHp, float oldHp, float curHp)
     {

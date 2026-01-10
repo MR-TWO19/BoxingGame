@@ -1,43 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
+using Doozy.Engine.UI;
+using TwoCore;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MainView : MonoBehaviour
+public class MainView : BaseView
 {
-    [SerializeField] Button btn1VS1;
-    [SerializeField] Button btn1VSMany;
-    [SerializeField] Button btnManyVSMany;
+    [SerializeField] private UIButton btnSetting;
+    [SerializeField] private UIButton btnHowToPlay;
+    [SerializeField] private UIButton btnPlay;
+    [SerializeField] private UIButton btnChallenge;
+    [SerializeField] private UIButton btnUpgrade;
 
-    private void Start()
+
+    protected override void Awake()
     {
-        btn1VS1.onClick.AddListener(OnClick1VS1);
-        btn1VSMany.onClick.AddListener(OnClick1VSMany);
-        btnManyVSMany.onClick.AddListener(OnClickManyVSMany);
+        base.Awake();
+        btnSetting.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            SettingPopup.Show();
+        });
+
+        btnHowToPlay.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            HowToPlayPopup.Show();
+        });
+        btnPlay.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            PlayPopup.Show(GameMode.OneVSOne);
+        });
+
+        btnChallenge.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            HowToPlayPopup.Show();
+        });
+        btnUpgrade.OnClick.OnTrigger.Event.AddListener(() =>
+        {
+            HowToPlayPopup.Show();
+        });
     }
 
-    public void Show()
-   {
-        gameObject.SetActive(true);
-   }
-
-    public void Hide()
+    protected override void OnShow()
     {
-        gameObject.SetActive(false);
-    }
+        base.OnShow();
 
-    private void OnClick1VS1()
-    {
-        UIManager.Ins.levelPopup.Show(GameMode.OneVSOne);
-    }
+        if (UserSaveData.Ins.MusicOn) Soundy.ToUnmute(Soundy.MusicParam);
+        else Soundy.ToMute(Soundy.MusicParam);
 
-    private void OnClick1VSMany()
-    {
-        UIManager.Ins.levelPopup.Show(GameMode.OneVSMany);
-    }
+        if (UserSaveData.Ins.SfxOn) Soundy.ToUnmute(Soundy.SfxParam);
+        else Soundy.ToMute(Soundy.SfxParam);
 
-    private void OnClickManyVSMany()
-    {
-        UIManager.Ins.levelPopup.Show(GameMode.ManeyVsMany);
+        SoundManager.Ins.PlayBGMusic();
     }
 }

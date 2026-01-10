@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UIManager : SingletonMono<UIManager>
 {
-    public UIGamePlay uiGamePlay;
+    public InGameView uiGamePlay;
     public SimpleJoystick joystick;
     public MainView mainView;
-    public LevelPopup levelPopup;
+    public PlayPopup levelPopup;
     public ResultPopup resultPopup;
 
     private void Start()
@@ -19,12 +19,12 @@ public class UIManager : SingletonMono<UIManager>
     {
         uiGamePlay.gameObject.SetActive(true);
         levelPopup.Hide();
-        mainView.Hide();
+        //mainView.Hide();
     }
 
     public void ResetUI()
     {
-        mainView.Show();
+        //mainView.Show();
         levelPopup.Hide();
         uiGamePlay.ReserUI();
         uiGamePlay.gameObject.SetActive(false);

@@ -63,9 +63,9 @@ public class Character : MonoBehaviour
         currHP = CurCharacterData.HP;
 
         if (teamType == TeamType.Ally)
-            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
+            InGameView.Ins.SetUpHelthAlly(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
         else
-            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
+            InGameView.Ins.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, CurCharacterData.HP, CurCharacterData.HP);
 
         characterState = CharacterState.Idle;
     }
@@ -288,9 +288,9 @@ public class Character : MonoBehaviour
                 GameManager.Ins.GameMove.EnemyDead(this);
         }
         if (teamType == TeamType.Ally)
-            UIManager.Ins.uiGamePlay.SetUpHelthAlly(txtName.text, CurCharacterData.HP, oldHP, currHP);
+            InGameView.Ins.SetUpHelthAlly(txtName.text, CurCharacterData.HP, oldHP, currHP);
         else
-            UIManager.Ins.uiGamePlay.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, oldHP, currHP);
+            InGameView.Ins.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, oldHP, currHP);
     }
 
     #endregion

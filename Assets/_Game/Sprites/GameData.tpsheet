@@ -1,0 +1,34 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:6a5060d4fa65b7017a0808f82794a068:deeada35643243b268673dad9d27b9e5:6f8c74a3732e8e9b4f5efbfe8e4a74d7$
+#
+:format=40300
+:texture=GameData.png
+:size=4096x4096
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+_;1246;874;67;105; 0.5;0.5; 0;0;0;0
+buttonSetting1;6;842;851;839; 0.5;0.5; 0;0;0;0
+Group 41497;1351;2292;1482;1798; 0.5;0.5; 0;0;0;0
+Group 41498;6;268;1086;565; 0.5;0.5; 0;0;0;0
+Group 41499;1101;530;169;156; 0.5;0.5; 0;0;0;0
+Group 41500;1101;695;169;158; 0.5;0.5316455696202531; 0;0;0;0
+image 48;6;1690;1336;2400; 0.5;0.5; 0;0;0;0
+Rectangle 2288;866;1456;845;225; 0.5;0.5; 0;0;0;0
+Rectangle 2289;866;1222;845;225; 0.5;0.5; 0;0;0;0
+Rectangle 2775;866;862;371;117; 0.5;0.5; 0;0;0;0
+Rectangle 2776;866;988;845;225; 0.5;0.5; 0;0;0;0
+Rectangle 2777;866;1222;845;225; 0.5;0.5; 0;0;0;0
+Rectangle 2778;866;862;371;117; 0.5;0.5; 0;0;0;0
+settings;1238;417;104;104; 0.5;0.5; 0;0;0;0
+tag;6;11;1020;248; 0.5;0.5; 0;0;0;0
+UI - Coin-1;1101;378;128;143; 0.5;0.5034965034965035; 0;0;0;0
+UI - Coin;1101;378;128;143; 0.5;0.5034965034965035; 0;0;0;0
+Ui-Button1;1035;23;895;236; 0.5;0.5021186440677966; 0;0;0;0
+Vector 603;1101;292;79;77; 0.5;0.5; 0;0;0;0

@@ -1,23 +1,50 @@
-﻿using System.Collections;
+﻿using Doozy.Engine.UI;
+using System.Collections;
 using System.Collections.Generic;
+using TwoCore;
 using UnityEngine;
 
-public class LevelPopup : MonoBehaviour
+public class PlayPopup : BasePopup
 {
     [SerializeField] GameObject parents;
     [SerializeField] List<LevelButon> levelButons;
     [SerializeField] GameObject levelButtonPrefab;
-    
-    public void Show(GameMode gameMode)
+
+
+    private static PlayPopup _instance;
+
+    public static PlayPopup Show(GameMode gameMode)
     {
-        gameObject.SetActive(true);
-        LoadLevel(gameMode);
+        if (_instance == null)
+        {
+            _instance = ShowWithParamsAndMethod<PlayPopup>("PlayPopup", PopupShowMethod.QUEUE, gameMode);
+        }
+        else
+        {
+            UIPopupManager.ShowPopup(_instance.UIPopup, true, false);
+        }
+
+        return _instance;
     }
 
-    public void Hide()
+    public static void HidePopup()
     {
-        gameObject.SetActive(false);
+        _instance.Hide();
     }
+
+    protected override void SetParams(params object[] @params)
+    {
+        base.SetParams(@params);
+
+        if (@params == null || @params.Length == 0)
+            return;
+
+        if (@params[0] is GameMode gameMode)
+        {
+            LoadLevel(gameMode);
+        }
+    }
+
 
     private void LoadLevel(GameMode gameMode)
     {

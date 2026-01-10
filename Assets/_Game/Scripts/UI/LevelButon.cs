@@ -9,6 +9,7 @@ public class LevelButon : MonoBehaviour
 {
     [SerializeField] Button btn;
     [SerializeField] TextMeshProUGUI txtLevel;
+    [SerializeField] private GameObject objLock;
 
     int level;
     GameMode gameMode;
@@ -20,7 +21,7 @@ public class LevelButon : MonoBehaviour
 
     private void PlayGame()
     {
-        GameManager.Ins.SetUp(level, gameMode);
+        GameManager.Ins.LoadGame(level, gameMode);
     }
 
     public void SetUp(int level, GameMode gameMode)
@@ -29,6 +30,11 @@ public class LevelButon : MonoBehaviour
         this.gameMode = gameMode;
         this.level = level;
         gameObject.SetActive(true);
+
+        bool isLock = level > UserSaveData.Ins.Level;
+
+        objLock.SetActive(isLock);
+        btn.interactable = !isLock;
     }
 
 
