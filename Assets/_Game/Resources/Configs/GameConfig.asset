@@ -16,16 +16,16 @@ MonoBehaviour:
   bellyRate: 0
   UpdareData:
     HP:
-      value: 0
-      Price: 0
+      value: 10
+      Price: 100
     Speed:
-      value: 0
+      value: 0.05
       Price: 0
     LATK:
-      value: 0
+      value: 5
       Price: 0
     RATK:
-      value: 0
+      value: 5
       Price: 0
   CharaterDatas:
   - id: 0
