@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class GameModeData 
 {
-    public PowerExtraData PlayerExtraData;
+    //public PowerExtraData PlayerExtraData;
     public PowerExtraData AllyExtraData;
     public List<CharacterState> useSkillAllys;
     public List<LevelGameData> LevelGameDatas;
@@ -14,6 +14,8 @@ public class GameModeData
 [Serializable]
 public class LevelGameData
 {
+    public int CoinWin;
+    public int CoinLose;
     public List<CharacterState> UseSkills;
     public int DodgeRate;
     public List<EnemyInfor> EnemyInfors;

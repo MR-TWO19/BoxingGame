@@ -19,8 +19,17 @@ public class ManyVSManyMode : GameModeBase
     public override void SetUpGame(int level)
     {
         randomRemove.Clear();
-        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2), 
-            GameModeConfig.Ins.ManyVsManyMode.PlayerExtraData, TeamType.Ally, true, new()); // Create player
+
+        PowerExtraData powerExtraData = new()
+        {
+            HP = UserSaveData.Ins.CharacterSaveData.CurrHP,
+            Speed = UserSaveData.Ins.CharacterSaveData.CurrSpeed,
+            DamgeLeftHand = UserSaveData.Ins.CharacterSaveData.DamageLeft,
+            DamgeRightHand = UserSaveData.Ins.CharacterSaveData.DamageRight,
+        };
+
+        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2),
+            powerExtraData, TeamType.Ally, true, new()); // Create player
         CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), 
             GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
         CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), 

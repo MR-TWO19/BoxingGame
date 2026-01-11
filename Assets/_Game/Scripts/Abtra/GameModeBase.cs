@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using TwoCore;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -41,7 +42,7 @@ public abstract class GameModeBase : IGameModeBase
         }
     }
 
-    public void EnemyDead(Character character)
+    public virtual void EnemyDead(Character character)
     {
         Enemys.RemoveAll(item => item.character == character);
         if (Enemys.Count <= 0)
@@ -54,9 +55,33 @@ public abstract class GameModeBase : IGameModeBase
     }
 
     private void ShowResult(bool isWin) {
-        DOVirtual.DelayedCall(5, () =>
+        SoundManager.Ins.StopMusic();
+        SoundManager.Ins.PlayOneShot(SoundID.ENDGAME);
+
+        if(isWin)
+            SoundManager.Ins.PlayOneShot(SoundID.WIN);
+        else
+            SoundManager.Ins.PlayOneShot(SoundID.LOSE);
+
+        DOVirtual.DelayedCall(3, () =>
         {
-            //UIManager.Ins.resultPopup.Show(isWin);
+            ResultPopup.Show(isWin);
         });
+    }
+
+    public void ResetGame()
+    {
+        for (int i = Allys.Count - 1; i >= 0; i--)
+        {
+            Allys[i].character.StopAllActions();
+        }
+
+        for (int i = Enemys.Count - 1; i >= 0; i--)
+        {
+            Enemys[i].character.StopAllActions();
+        }
+
+        Allys.Clear();
+        Enemys.Clear();
     }
 }

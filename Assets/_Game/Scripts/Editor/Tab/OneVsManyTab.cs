@@ -104,6 +104,7 @@ public class OneVsManyTab : TabContent
 
         Draw.BeginVertical("box");
 
+        level.CoinWin = Draw.IntField("Coin", level.CoinWin, 200);
         level.DodgeRate = Draw.IntField("Dodge Rate", level.DodgeRate, 200);
         DrawSkillList("Use Skills", level.UseSkills);
         DrawEnemyFoldout(level, index);

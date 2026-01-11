@@ -12,4 +12,5 @@ public interface IGameModeBase
     void PlayGame();
     void AllyDead(Character character);
     void EnemyDead(Character character);
+    void ResetGame();
 }

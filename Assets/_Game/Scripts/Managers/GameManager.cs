@@ -2,6 +2,7 @@ using DG.Tweening;
 using Doozy.Engine;
 using System.Collections;
 using System.Collections.Generic;
+using TwoCore;
 using UnityEngine;
 
 public class GameManager : SingletonMono<GameManager>
@@ -12,6 +13,14 @@ public class GameManager : SingletonMono<GameManager>
     public List<GameObject> CharacterList;
     public IGameModeBase GameMove;
 
+    [SerializeField] private int coinWin;
+    [SerializeField] private int coinLose;
+    public int CoinWin { get => coinWin; set => coinWin = value; }
+    public int CoinLose
+    {
+        get => GameModeEnum != GameMode.OneVSOne ? coinWin : coinLose;
+        set => coinLose = value;
+    }
     private int currLevel;
 
     private void Update()
@@ -25,6 +34,7 @@ public class GameManager : SingletonMono<GameManager>
 
     public void SetUpGame(int Level, GameMode gameMode)
     {
+        SoundManager.Ins.StopMusic();
         GameModeEnum = gameMode;
         currLevel = Level;
 
@@ -54,6 +64,8 @@ public class GameManager : SingletonMono<GameManager>
         GameMove.SetUpGame(currLevel);
         DOVirtual.DelayedCall(1, () =>
         {
+            SoundManager.Ins.PlayBGBattleMusic();
+            SoundManager.Ins.PlayOneShot(SoundID.STARTGAME);
             PlayGame();
         });
     }
@@ -61,5 +73,20 @@ public class GameManager : SingletonMono<GameManager>
     public void PlayGame()
     {
         GameMove.PlayGame();
+    }
+
+    public void ResetGame()
+    {
+        GameMove.ResetGame();
+        GameMove = null;
+    }
+
+    public void NextGame() 
+    {
+        currLevel = UserSaveData.Ins.Level;
+
+        ObjectPoolManager.Ins.ResetItem();
+
+        LoadGame();
     }
 }

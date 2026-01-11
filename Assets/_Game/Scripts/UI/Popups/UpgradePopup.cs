@@ -90,8 +90,10 @@ public class UpgradePopup : BasePopup
 
     private bool CanAfford(int price)
     {
+
         if (UserSaveData.Ins.Coin < price)
         {
+            Hide();
             ConfirmPopup.ShowOneButtonNoQueue(
                 "NOTIFY",
                 "You do not have enough money to perform this action.",
@@ -118,7 +120,7 @@ public class UpgradePopup : BasePopup
         if (!CanAfford(price))
             return;
 
-        //SoundManager.Ins.PlayOneShot(SoundID.UPGRADE);
+        SoundManager.Ins.PlayOneShot(SoundID.UPGRADE);
 
         characterData.Level += 1;
         characterData.CurrHP += addHp;

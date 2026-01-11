@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: SoundDatabase_Music
   m_EditorClassIdentifier: 
   DatabaseName: Music
-  OutputAudioMixerGroup: {fileID: 4904387973358714719, guid: d8436dce0a6de524a8c2bf2d5b57f593, type: 2}
+  OutputAudioMixerGroup: {fileID: 4904387973358714719, guid: eb08b11551ef1be4888adb1b1657c3cd, type: 2}
   SoundNames:
   - No Sound
   - BGMusic

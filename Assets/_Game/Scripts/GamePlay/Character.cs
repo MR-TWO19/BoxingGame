@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
+using TwoCore;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -136,6 +137,7 @@ public class Character : MonoBehaviour
         else if(characterState == CharacterState.PunchRight || characterState == CharacterState.PunchUppercut || characterState == CharacterState.PunchStraight)
             rightHandHitBox.EnabledColide();
 
+        SoundManager.Ins.PlayOneShot(SoundID.PUNCH, 0.2f);
         animator.SetTrigger(state.ToString());
         StartResetToIdle(state);
     }
@@ -283,6 +285,8 @@ public class Character : MonoBehaviour
     {
         float oldHP = currHP;
         currHP -= damage;
+        SoundManager.Ins.PlayOneShot(SoundID.REACTPUNCH);
+
 
         if (currHP <= 0)
         {
@@ -294,7 +298,7 @@ public class Character : MonoBehaviour
             DOVirtual.DelayedCall(duration, () =>
             {
                 gameObject.SetActive(false);
-            });
+            }).SetTarget(this);
             if (teamType == TeamType.Ally)
                 GameManager.Ins.GameMove.AllyDead(this);
             else
@@ -304,6 +308,29 @@ public class Character : MonoBehaviour
             InGameView.Ins.SetUpHelthAlly(txtName.text, CurCharacterData.HP, oldHP, currHP);
         else
             InGameView.Ins.SetUpHelthEnemy(txtName.text, CurCharacterData.HP, oldHP, currHP);
+    }
+
+    public void StopAllActions()
+    {
+        _resetToIdleVersion++;
+        if (_resetToIdleCoroutine != null) {
+            StopCoroutine(_resetToIdleCoroutine);
+            _resetToIdleCoroutine = null;
+        }
+
+        DOTween.Kill(this);
+
+        isAction = false;
+        rightHandHitBox.DissableColide();
+        leftHandHitBox.DissableColide();
+
+        if (!IsKnockedOut()) {
+            characterState = CharacterState.Idle;
+            animator.SetBool("Move", false);
+            animator.SetTrigger("Idle");
+        }
+
+        gameObject.SetActive(false);
     }
 
     #endregion

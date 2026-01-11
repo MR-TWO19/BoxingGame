@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: GameModeConfig
   m_EditorClassIdentifier: 
   OneVsOneMode:
-    PlayerExtraData:
-      HP: 30
-      Speed: 0.3
-      DamgeLeftHand: 5
-      DamgeRightHand: 10
     AllyExtraData:
       HP: 0
       Speed: 0
@@ -25,7 +20,9 @@ MonoBehaviour:
       DamgeRightHand: 0
     useSkillAllys: 
     LevelGameDatas:
-    - UseSkills: 0200000005000000
+    - CoinWin: 10
+      CoinLose: 5
+      UseSkills: 0200000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -35,7 +32,9 @@ MonoBehaviour:
           Speed: 0.1
           DamgeLeftHand: 2
           DamgeRightHand: 5
-    - UseSkills: 0500000002000000
+    - CoinWin: 15
+      CoinLose: 5
+      UseSkills: 0500000002000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -45,7 +44,9 @@ MonoBehaviour:
           Speed: 0.2
           DamgeLeftHand: 2
           DamgeRightHand: 5
-    - UseSkills: 020000000300000005000000
+    - CoinWin: 20
+      CoinLose: 5
+      UseSkills: 020000000300000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -55,7 +56,9 @@ MonoBehaviour:
           Speed: 0.2
           DamgeLeftHand: 2
           DamgeRightHand: 5
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -65,7 +68,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 4
           DamgeRightHand: 8
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -75,7 +80,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 4
           DamgeRightHand: 8
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -85,7 +92,9 @@ MonoBehaviour:
           Speed: 1.2
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -95,7 +104,9 @@ MonoBehaviour:
           Speed: 1.5
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 300
@@ -105,7 +116,9 @@ MonoBehaviour:
           Speed: 2
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -115,7 +128,9 @@ MonoBehaviour:
           Speed: 2.2
           DamgeLeftHand: 10
           DamgeRightHand: 15
-    - UseSkills: 02000000030000000500000004000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
@@ -126,11 +141,6 @@ MonoBehaviour:
           DamgeLeftHand: 20
           DamgeRightHand: 25
   OneVsManyMode:
-    PlayerExtraData:
-      HP: 100
-      Speed: 0.4
-      DamgeLeftHand: 5
-      DamgeRightHand: 10
     AllyExtraData:
       HP: 0
       Speed: 0
@@ -138,7 +148,9 @@ MonoBehaviour:
       DamgeRightHand: 0
     useSkillAllys: 
     LevelGameDatas:
-    - UseSkills: 05000000
+    - CoinWin: 5
+      CoinLose: 0
+      UseSkills: 05000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -148,7 +160,9 @@ MonoBehaviour:
           Speed: 0.1
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -165,7 +179,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 7
@@ -182,7 +198,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
@@ -206,7 +224,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 15
@@ -230,7 +250,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 20
@@ -254,7 +276,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 2
@@ -278,7 +302,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -302,7 +328,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 20
@@ -319,7 +347,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 30
@@ -337,11 +367,6 @@ MonoBehaviour:
           DamgeLeftHand: 10
           DamgeRightHand: 20
   ManyVsManyMode:
-    PlayerExtraData:
-      HP: 100
-      Speed: 0.5
-      DamgeLeftHand: 5
-      DamgeRightHand: 10
     AllyExtraData:
       HP: 50
       Speed: 0.3
@@ -349,7 +374,9 @@ MonoBehaviour:
       DamgeRightHand: 15
     useSkillAllys: 02000000030000000400000005000000
     LevelGameDatas:
-    - UseSkills: 05000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 05000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -359,7 +386,9 @@ MonoBehaviour:
           Speed: 0.1
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -376,7 +405,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 7
@@ -393,7 +424,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
@@ -417,7 +450,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 15
@@ -441,7 +476,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 20
@@ -465,7 +502,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 2
@@ -489,7 +528,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
@@ -513,7 +554,9 @@ MonoBehaviour:
           Speed: 0.8
           DamgeLeftHand: 10
           DamgeRightHand: 20
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 20
@@ -530,7 +573,9 @@ MonoBehaviour:
           Speed: 0.4
           DamgeLeftHand: 5
           DamgeRightHand: 10
-    - UseSkills: 02000000030000000400000005000000
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 30

@@ -113,6 +113,8 @@ public class OneVsOneTab : TabContent
 
         Draw.BeginVertical("box");
 
+        level.CoinWin = Draw.IntField("Coin Win", level.CoinWin, 200);
+        level.CoinLose = Draw.IntField("Coin Lose", level.CoinLose, 200);
         level.DodgeRate = Draw.IntField("Dodge Rate", level.DodgeRate, 200);
         DrawSkillList("Use Skills", level.UseSkills);
 

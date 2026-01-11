@@ -61,7 +61,7 @@ namespace TwoCore
 
         public void StopMusic()
         {
-            SoundyController.StopAll();
+            currentMusic.Stop();
             currentMusic = null;
         }
 

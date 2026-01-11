@@ -16,9 +16,22 @@ public class OnsVSOneMode : GameModeBase
     {
         GameObject playerPrefab = GameManager.Ins.CharacterList[0];
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(4);
-        CreateCharacter("Player", playerPrefab, posPlayer, GameModeConfig.Ins.OneVsOneMode.PlayerExtraData, TeamType.Ally, true, new()); // Create player
+
+        PowerExtraData powerExtraData = new()
+        {
+            HP = UserSaveData.Ins.CharacterSaveData.CurrHP,
+            Speed = UserSaveData.Ins.CharacterSaveData.CurrSpeed,
+            DamgeLeftHand = UserSaveData.Ins.CharacterSaveData.DamageLeft,
+            DamgeRightHand = UserSaveData.Ins.CharacterSaveData.DamageRight,
+        };
+
+        CreateCharacter("Player", playerPrefab, posPlayer, powerExtraData, TeamType.Ally, true, new()); // Create player
 
         LevelGameData levelGameData = GameModeConfig.Ins.OneVsOneMode.LevelGameDatas[level - 1];
+
+        GameManager.Ins.CoinWin = levelGameData.CoinWin;
+        GameManager.Ins.CoinLose = levelGameData.CoinLose;
+
         for (int i = 0; i < levelGameData.EnemyInfors[0].Quanlity; i++)
         {
             Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(32);

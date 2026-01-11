@@ -1,6 +1,7 @@
+using Doozy.Engine;
+using Doozy.Engine.UI;
 using TwoCore;
 using UnityEngine;
-using Doozy.Engine.UI;
 using UnityEngine.UI;
 
 public class SettingPopup : BasePopup
@@ -77,8 +78,9 @@ public class SettingPopup : BasePopup
 
     private void OnClickHome()
     {
+        GameEventMessage.SendEvent("GoToMain", null);
+        GameManager.Ins.ResetGame();
         Hide();
-
     }
 
 

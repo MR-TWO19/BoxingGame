@@ -1,4 +1,5 @@
-﻿using Doozy.Engine.UI;
+﻿using Doozy.Engine;
+using Doozy.Engine.UI;
 using TMPro;
 using TwoCore;
 using UnityEngine;
@@ -28,6 +29,8 @@ public class ResultPopup : BasePopup
 
     protected override void OnShow()
     {
+        SoundManager.Ins.PlayBGMusic();
+
         if (frameWin) frameWin.SetActive(_isWin);
         if (frameLose) frameLose.SetActive(!_isWin);
 
@@ -37,14 +40,16 @@ public class ResultPopup : BasePopup
 
         if(_isWin)
         {
-            //txtCoin.text = $"+ {GameManager.Ins.LevelData.GoldWin}";
-            //UserSaveData.Ins.AddCoin(GameManager.Ins.LevelData.GoldWin);
+
+            txtCoin.text = $"+ {GameManager.Ins.CoinWin}";
+            UserSaveData.Ins.AddCoin(GameManager.Ins.CoinWin);
             UserSaveData.Ins.NextLevel();
         }
         else
         {
-            //txtCoin.text = $"+ {GameManager.Ins.LevelData.GoldLose}";
-            //UserSaveData.Ins.AddCoin(GameManager.Ins.LevelData.GoldLose);
+
+            txtCoin.text = $"+ {GameManager.Ins.CoinLose}";
+            UserSaveData.Ins.AddCoin(GameManager.Ins.CoinLose);
         }
     }
 
@@ -60,14 +65,14 @@ public class ResultPopup : BasePopup
 
     private void NextLevel()
     {
-        //GameManager.Ins.NextLevel();
-        //IngameView.Ins.UpdateData();
+        GameManager.Ins.NextGame();
         Hide();
     }
 
     private void GoHome()
     {
-        //GameManager.Ins.GoHome();
+        GameEventMessage.SendEvent("GoToMain", null);
+        GameManager.Ins.ResetGame();
         Hide();
     }
 }
