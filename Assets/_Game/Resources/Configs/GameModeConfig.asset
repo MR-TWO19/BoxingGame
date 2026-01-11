@@ -20,8 +20,8 @@ MonoBehaviour:
       DamgeRightHand: 0
     useSkillAllys: 
     LevelGameDatas:
-    - CoinWin: 10
-      CoinLose: 5
+    - CoinWin: 100
+      CoinLose: 50
       UseSkills: 0200000005000000
       DodgeRate: 0
       EnemyInfors:
@@ -32,8 +32,8 @@ MonoBehaviour:
           Speed: 0.1
           DamgeLeftHand: 2
           DamgeRightHand: 5
-    - CoinWin: 15
-      CoinLose: 5
+    - CoinWin: 120
+      CoinLose: 60
       UseSkills: 0500000002000000
       DodgeRate: 0
       EnemyInfors:
@@ -42,10 +42,10 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 50
           Speed: 0.2
-          DamgeLeftHand: 2
-          DamgeRightHand: 5
-    - CoinWin: 20
-      CoinLose: 5
+          DamgeLeftHand: 3
+          DamgeRightHand: 6
+    - CoinWin: 140
+      CoinLose: 70
       UseSkills: 020000000300000005000000
       DodgeRate: 0
       EnemyInfors:
@@ -54,10 +54,10 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 20
           Speed: 0.2
-          DamgeLeftHand: 2
-          DamgeRightHand: 5
-    - CoinWin: 0
-      CoinLose: 0
+          DamgeLeftHand: 4
+          DamgeRightHand: 7
+    - CoinWin: 160
+      CoinLose: 80
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
@@ -66,10 +66,10 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 25
           Speed: 0.4
-          DamgeLeftHand: 4
-          DamgeRightHand: 8
-    - CoinWin: 0
-      CoinLose: 0
+          DamgeLeftHand: 5
+          DamgeRightHand: 9
+    - CoinWin: 180
+      CoinLose: 90
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
@@ -78,10 +78,10 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 100
           Speed: 0.8
-          DamgeLeftHand: 4
-          DamgeRightHand: 8
-    - CoinWin: 0
-      CoinLose: 0
+          DamgeLeftHand: 20
+          DamgeRightHand: 36
+    - CoinWin: 200
+      CoinLose: 100
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
@@ -90,10 +90,10 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 150
           Speed: 1.2
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
-      CoinLose: 0
+          DamgeLeftHand: 21
+          DamgeRightHand: 37
+    - CoinWin: 220
+      CoinLose: 110
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
@@ -102,20 +102,20 @@ MonoBehaviour:
         EnemyExtraData:
           HP: 200
           Speed: 1.5
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
-      CoinLose: 0
+          DamgeLeftHand: 22
+          DamgeRightHand: 38
+    - CoinWin: 240
+      CoinLose: 120
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 300
         CharacterID: 0
         EnemyExtraData:
-          HP: 45
+          HP: 220
           Speed: 2
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
+          DamgeLeftHand: 23
+          DamgeRightHand: 39
     - CoinWin: 0
       CoinLose: 0
       UseSkills: 02000000030000000500000004000000
@@ -128,18 +128,138 @@ MonoBehaviour:
           Speed: 2.2
           DamgeLeftHand: 10
           DamgeRightHand: 15
-    - CoinWin: 0
-      CoinLose: 0
+    - CoinWin: 260
+      CoinLose: 130
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
         CharacterID: 0
         EnemyExtraData:
-          HP: 1000
+          HP: 300
           Speed: 3
-          DamgeLeftHand: 20
-          DamgeRightHand: 25
+          DamgeLeftHand: 24
+          DamgeRightHand: 40
+    - CoinWin: 280
+      CoinLose: 140
+      UseSkills: 02000000030000000500000004000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 350
+          Speed: 4
+          DamgeLeftHand: 25
+          DamgeRightHand: 41
+    - CoinWin: 300
+      CoinLose: 150
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 400
+          Speed: 5
+          DamgeLeftHand: 30
+          DamgeRightHand: 50
+    - CoinWin: 400
+      CoinLose: 200
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 500
+          Speed: 6
+          DamgeLeftHand: 40
+          DamgeRightHand: 60
+    - CoinWin: 500
+      CoinLose: 250
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 600
+          Speed: 7
+          DamgeLeftHand: 50
+          DamgeRightHand: 70
+    - CoinWin: 600
+      CoinLose: 300
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 700
+          Speed: 8
+          DamgeLeftHand: 60
+          DamgeRightHand: 80
+    - CoinWin: 800
+      CoinLose: 400
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 800
+          Speed: 9
+          DamgeLeftHand: 70
+          DamgeRightHand: 90
+    - CoinWin: 900
+      CoinLose: 450
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 900
+          Speed: 10
+          DamgeLeftHand: 80
+          DamgeRightHand: 100
+    - CoinWin: 1000
+      CoinLose: 500
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 1000
+          Speed: 11
+          DamgeLeftHand: 90
+          DamgeRightHand: 110
+    - CoinWin: 1100
+      CoinLose: 550
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 1100
+          Speed: 12
+          DamgeLeftHand: 100
+          DamgeRightHand: 120
+    - CoinWin: 0
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 1
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 1200
+          Speed: 13
+          DamgeLeftHand: 110
+          DamgeRightHand: 130
   OneVsManyMode:
     AllyExtraData:
       HP: 0
@@ -148,19 +268,19 @@ MonoBehaviour:
       DamgeRightHand: 0
     useSkillAllys: 
     LevelGameDatas:
-    - CoinWin: 5
+    - CoinWin: 100
       CoinLose: 0
-      UseSkills: 05000000
+      UseSkills: 0500000003000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 5
         CharacterID: 0
         EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
+          HP: 100
+          Speed: 1
+          DamgeLeftHand: 20
+          DamgeRightHand: 30
+    - CoinWin: 200
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
@@ -168,18 +288,18 @@ MonoBehaviour:
       - Quanlity: 5
         CharacterID: 0
         EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
+          HP: 300
+          Speed: 1
+          DamgeLeftHand: 20
+          DamgeRightHand: 30
       - Quanlity: 2
         CharacterID: 0
         EnemyExtraData:
-          HP: 3
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
+          HP: 400
+          Speed: 3
+          DamgeLeftHand: 50
+          DamgeRightHand: 60
+    - CoinWin: 300
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
@@ -187,18 +307,18 @@ MonoBehaviour:
       - Quanlity: 7
         CharacterID: 0
         EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
+          HP: 500
+          Speed: 1
+          DamgeLeftHand: 20
+          DamgeRightHand: 30
       - Quanlity: 3
         CharacterID: 0
         EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
+          HP: 700
+          Speed: 2
+          DamgeLeftHand: 50
+          DamgeRightHand: 60
+    - CoinWin: 400
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
@@ -206,148 +326,71 @@ MonoBehaviour:
       - Quanlity: 10
         CharacterID: 0
         EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 5
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 1
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
-    - CoinWin: 0
+          HP: 1000
+          Speed: 3
+          DamgeLeftHand: 40
+          DamgeRightHand: 50
+    - CoinWin: 500
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
-      - Quanlity: 15
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
       - Quanlity: 10
         CharacterID: 0
         EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 3
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
-    - CoinWin: 0
+          HP: 1500
+          Speed: 3
+          DamgeLeftHand: 60
+          DamgeRightHand: 70
+    - CoinWin: 600
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
-      - Quanlity: 20
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
       - Quanlity: 10
         CharacterID: 0
         EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 5
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
-    - CoinWin: 0
+          HP: 2000
+          Speed: 3
+          DamgeLeftHand: 70
+          DamgeRightHand: 80
+    - CoinWin: 700
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
-      - Quanlity: 2
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 20
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 5
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
-    - CoinWin: 0
-      CoinLose: 0
-      UseSkills: 02000000030000000400000005000000
-      DodgeRate: 0
-      EnemyInfors:
-      - Quanlity: 5
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 20
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
       - Quanlity: 10
         CharacterID: 0
         EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
-    - CoinWin: 0
+          HP: 2500
+          Speed: 3
+          DamgeLeftHand: 90
+          DamgeRightHand: 100
+    - CoinWin: 800
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
-      - Quanlity: 20
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 10
-          Speed: 0.1
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
       - Quanlity: 10
         CharacterID: 0
         EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-    - CoinWin: 0
+          HP: 3000
+          Speed: 5
+          DamgeLeftHand: 150
+          DamgeRightHand: 200
+    - CoinWin: 900
+      CoinLose: 0
+      UseSkills: 02000000030000000400000005000000
+      DodgeRate: 0
+      EnemyInfors:
+      - Quanlity: 10
+        CharacterID: 0
+        EnemyExtraData:
+          HP: 3500
+          Speed: 5
+          DamgeLeftHand: 200
+          DamgeRightHand: 210
+    - CoinWin: 1000
       CoinLose: 0
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
@@ -355,17 +398,10 @@ MonoBehaviour:
       - Quanlity: 30
         CharacterID: 0
         EnemyExtraData:
-          HP: 15
-          Speed: 0.4
-          DamgeLeftHand: 5
-          DamgeRightHand: 10
-      - Quanlity: 20
-        CharacterID: 0
-        EnemyExtraData:
-          HP: 30
-          Speed: 0.8
-          DamgeLeftHand: 10
-          DamgeRightHand: 20
+          HP: 4000
+          Speed: 5
+          DamgeLeftHand: 250
+          DamgeRightHand: 250
   ManyVsManyMode:
     AllyExtraData:
       HP: 50
