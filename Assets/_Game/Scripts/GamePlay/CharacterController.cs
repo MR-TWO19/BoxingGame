@@ -115,7 +115,7 @@ public class CharacterController : MonoBehaviour
 
     private void BotHandler()
     {
-        if(objTarget.IsKnockedOut() || botDisable) return;
+        if(objTarget == null || objTarget.IsKnockedOut() || botDisable) return;
         Vector3 targetPos = objTarget.transform.position;
         if (isAtk)
         {
