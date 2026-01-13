@@ -74,7 +74,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 4
         EnemyExtraData:
           HP: 100
           Speed: 0.8
@@ -86,7 +86,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 1
         EnemyExtraData:
           HP: 150
           Speed: 1.2
@@ -110,7 +110,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 2
         EnemyExtraData:
           HP: 220
           Speed: 2
@@ -122,7 +122,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 3
         EnemyExtraData:
           HP: 400
           Speed: 2.2
@@ -134,7 +134,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 5
         EnemyExtraData:
           HP: 300
           Speed: 3
@@ -146,7 +146,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 1
         EnemyExtraData:
           HP: 350
           Speed: 4
@@ -158,7 +158,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 3
         EnemyExtraData:
           HP: 400
           Speed: 5
@@ -170,7 +170,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 2
         EnemyExtraData:
           HP: 500
           Speed: 6
@@ -182,7 +182,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 6
         EnemyExtraData:
           HP: 600
           Speed: 7
@@ -194,7 +194,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 5
         EnemyExtraData:
           HP: 700
           Speed: 8
@@ -206,7 +206,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 4
         EnemyExtraData:
           HP: 800
           Speed: 9
@@ -218,7 +218,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 3
         EnemyExtraData:
           HP: 900
           Speed: 10
@@ -230,9 +230,9 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 2
         EnemyExtraData:
-          HP: 1000
+          HP: 3000
           Speed: 11
           DamgeLeftHand: 90
           DamgeRightHand: 110
@@ -242,21 +242,21 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 5
         EnemyExtraData:
-          HP: 1100
+          HP: 4000
           Speed: 12
           DamgeLeftHand: 100
           DamgeRightHand: 120
-    - CoinWin: 0
-      CoinLose: 0
+    - CoinWin: 1200
+      CoinLose: 600
       UseSkills: 02000000030000000400000005000000
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 6
         EnemyExtraData:
-          HP: 1200
+          HP: 5000
           Speed: 13
           DamgeLeftHand: 110
           DamgeRightHand: 130
@@ -293,7 +293,7 @@ MonoBehaviour:
           DamgeLeftHand: 20
           DamgeRightHand: 30
       - Quanlity: 2
-        CharacterID: 0
+        CharacterID: 1
         EnemyExtraData:
           HP: 400
           Speed: 3
@@ -324,7 +324,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 2
         EnemyExtraData:
           HP: 1000
           Speed: 3
@@ -336,7 +336,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 3
         EnemyExtraData:
           HP: 1500
           Speed: 3
@@ -348,7 +348,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 4
         EnemyExtraData:
           HP: 2000
           Speed: 3
@@ -360,7 +360,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 4
         EnemyExtraData:
           HP: 2500
           Speed: 3
@@ -372,7 +372,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 5
         EnemyExtraData:
           HP: 3000
           Speed: 5
@@ -384,7 +384,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 10
-        CharacterID: 0
+        CharacterID: 6
         EnemyExtraData:
           HP: 3500
           Speed: 5
@@ -396,7 +396,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 30
-        CharacterID: 0
+        CharacterID: 6
         EnemyExtraData:
           HP: 4000
           Speed: 5
