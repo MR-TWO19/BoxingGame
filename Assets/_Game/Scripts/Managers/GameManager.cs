@@ -34,6 +34,8 @@ public class GameManager : SingletonMono<GameManager>
 
     public void SetUpGame(int Level, GameMode gameMode)
     {
+        ResetGame();
+
         SoundManager.Ins.StopMusic();
         GameModeEnum = gameMode;
         currLevel = Level;
@@ -77,6 +79,8 @@ public class GameManager : SingletonMono<GameManager>
 
     public void ResetGame()
     {
+        if (GameMove == null) return;
+
         GameMove.ResetGame();
         GameMove = null;
     }
@@ -85,7 +89,7 @@ public class GameManager : SingletonMono<GameManager>
     {
         currLevel = UserSaveData.Ins.Level;
 
-        ObjectPoolManager.Ins.ResetItem();
+        ResetGame();
 
         LoadGame();
     }

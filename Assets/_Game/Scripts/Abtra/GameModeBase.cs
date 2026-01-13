@@ -18,8 +18,8 @@ public abstract class GameModeBase : IGameModeBase
 
     public void CreateCharacter(string name, GameObject playerPrefab, Transform posTran, PowerExtraData extraData, TeamType team, bool isPlayer, List<CharacterState> useSkills) 
     {
-        GameObject character = ObjectPoolManager.Ins.GetObject(playerPrefab.name, playerPrefab);
-        //GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
+        //GameObject character = ObjectPoolManager.Ins.GetObject(playerPrefab.name, playerPrefab);
+        GameObject character = GameObject.Instantiate(playerPrefab, posTran.position, posTran.rotation);
         character.transform.position = posTran.position;
         character.transform.rotation = posTran.rotation;
         CharacterController controllerCharacter = character.GetComponent<CharacterController>();
@@ -74,11 +74,13 @@ public abstract class GameModeBase : IGameModeBase
         for (int i = Allys.Count - 1; i >= 0; i--)
         {
             Allys[i].character.StopAllActions();
+            Object.Destroy(Allys[i].gameObject);
         }
 
         for (int i = Enemys.Count - 1; i >= 0; i--)
         {
             Enemys[i].character.StopAllActions();
+            Object.Destroy(Enemys[i].gameObject);
         }
 
         Allys.Clear();

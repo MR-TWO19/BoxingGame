@@ -26,7 +26,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 0
+        CharacterID: 5
         EnemyExtraData:
           HP: 20
           Speed: 0.1
@@ -38,7 +38,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 1
+        CharacterID: 6
         EnemyExtraData:
           HP: 50
           Speed: 0.2
@@ -109,7 +109,7 @@ MonoBehaviour:
       UseSkills: 02000000030000000500000004000000
       DodgeRate: 0
       EnemyInfors:
-      - Quanlity: 300
+      - Quanlity: 1
         CharacterID: 0
         EnemyExtraData:
           HP: 220

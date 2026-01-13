@@ -294,10 +294,11 @@ public class Character : MonoBehaviour
             ColliderCharacter.isTrigger = true;
             characterState = CharacterState.KnockedOut;
             animator.SetTrigger(characterState.ToString());
-            float duration = GetClipDuration(characterState.ToString()) + 2;
+            float duration = GetClipDuration(characterState.ToString());
             DOVirtual.DelayedCall(duration, () =>
             {
                 gameObject.SetActive(false);
+                Destroy(gameObject);
             }).SetTarget(this);
             if (teamType == TeamType.Ally)
                 GameManager.Ins.GameMove.AllyDead(this);

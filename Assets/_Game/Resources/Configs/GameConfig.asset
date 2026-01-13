@@ -29,22 +29,50 @@ MonoBehaviour:
       Price: 0
   CharaterDatas:
   - id: 0
-    name: Char 01
+    name: Character 1
     Prefab: {fileID: 2122972254015428975, guid: 6e70ac2dd964f7e4798ba322509c7e7a, type: 3}
     HP: 10
     Speed: 0.1
     DamgeLeftHand: 1
     DamgeRightHand: 2
   - id: 1
-    name: Char 02
+    name: Character 2
     Prefab: {fileID: 7211577561630468249, guid: a389451827f7c29409b3feb7eb971647, type: 3}
     HP: 10
     Speed: 0.1
     DamgeLeftHand: 1
     DamgeRightHand: 2
   - id: 2
-    name: Char 03
+    name: Character 3
     Prefab: {fileID: 7421653487955196459, guid: 775cd3b427d63974d8703d8fc87cc3ce, type: 3}
+    HP: 10
+    Speed: 0.1
+    DamgeLeftHand: 1
+    DamgeRightHand: 2
+  - id: 3
+    name: Character 4
+    Prefab: {fileID: 2122972254015428975, guid: 5f73d5957ff0f6542ab08c312df6d8d2, type: 3}
+    HP: 10
+    Speed: 0.1
+    DamgeLeftHand: 1
+    DamgeRightHand: 2
+  - id: 4
+    name: Character 5
+    Prefab: {fileID: 2122972254015428975, guid: f01d816c89b23d84584ec5850b8b8ed8, type: 3}
+    HP: 10
+    Speed: 0.1
+    DamgeLeftHand: 1
+    DamgeRightHand: 2
+  - id: 5
+    name: Character 6
+    Prefab: {fileID: 7211577561630468249, guid: d500597caed398942b72c4bf9ecd5413, type: 3}
+    HP: 10
+    Speed: 0.1
+    DamgeLeftHand: 1
+    DamgeRightHand: 2
+  - id: 6
+    name: Character 7
+    Prefab: {fileID: 2122972254015428975, guid: cb22d96d10f211c4d9a69a9bb77f603f, type: 3}
     HP: 10
     Speed: 0.1
     DamgeLeftHand: 1
