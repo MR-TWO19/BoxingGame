@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headDamageRate: 0
   bellyRate: 0
+  ArenaPrefab: {fileID: 2718648281988078383, guid: 718310cd7480248409239d36ce60ccc0, type: 3}
   UpdareData:
     HP:
       value: 10
@@ -27,53 +28,77 @@ MonoBehaviour:
     RATK:
       value: 5
       Price: 0
+    TimeCountdown:
+      value: 0
+      Price: 0
   CharaterDatas:
   - id: 0
     name: Character 1
     Prefab: {fileID: 2122972254015428975, guid: 6e70ac2dd964f7e4798ba322509c7e7a, type: 3}
+    IsUnlock: 1
+    IsUse: 1
     HP: 10
     Speed: 0.1
     DamgeLeftHand: 1
     DamgeRightHand: 2
+    Price: 0
   - id: 1
     name: Character 2
     Prefab: {fileID: 7211577561630468249, guid: a389451827f7c29409b3feb7eb971647, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 200
-    Speed: 2
+    Speed: 0.2
     DamgeLeftHand: 30
     DamgeRightHand: 30
+    Price: 200
   - id: 2
     name: Character 3
     Prefab: {fileID: 7421653487955196459, guid: 775cd3b427d63974d8703d8fc87cc3ce, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 500
-    Speed: 3
+    Speed: 0.3
     DamgeLeftHand: 50
     DamgeRightHand: 50
+    Price: 500
   - id: 3
     name: Character 4
     Prefab: {fileID: 2122972254015428975, guid: 5f73d5957ff0f6542ab08c312df6d8d2, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 1000
-    Speed: 5
+    Speed: 0.4
     DamgeLeftHand: 70
     DamgeRightHand: 70
+    Price: 1000
   - id: 4
     name: Character 5
     Prefab: {fileID: 2122972254015428975, guid: f01d816c89b23d84584ec5850b8b8ed8, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 2000
-    Speed: 7
+    Speed: 0.7
     DamgeLeftHand: 90
     DamgeRightHand: 90
+    Price: 2000
   - id: 5
     name: Character 6
     Prefab: {fileID: 7211577561630468249, guid: d500597caed398942b72c4bf9ecd5413, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 3000
-    Speed: 9
+    Speed: 0.9
     DamgeLeftHand: 110
     DamgeRightHand: 110
+    Price: 5000
   - id: 6
     name: Character 7
     Prefab: {fileID: 2122972254015428975, guid: cb22d96d10f211c4d9a69a9bb77f603f, type: 3}
+    IsUnlock: 0
+    IsUse: 0
     HP: 5000
-    Speed: 13
+    Speed: 1.3
     DamgeLeftHand: 160
     DamgeRightHand: 160
+    Price: 10000

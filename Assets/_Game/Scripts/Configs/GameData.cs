@@ -9,6 +9,7 @@ public class UpdareData
     public InfoUpdare Speed;
     public InfoUpdare LATK;
     public InfoUpdare RATK;
+    public InfoUpdare TimeCountdown;
 }
 
 [Serializable]
@@ -23,6 +24,7 @@ public class CharacterSaveData
 {
     public int CharacterID;
     public int Level = 1;
+
     public bool IsUnlock;
     public bool IsUse;
 

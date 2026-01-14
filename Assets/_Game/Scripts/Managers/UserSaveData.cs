@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Scripting;
 using TwoCore;
+using System.Collections.Generic;
 using System.Linq;
 
 [Preserve]
@@ -14,7 +15,10 @@ public class UserSaveData : BaseUserData
 
     public int Level;
 
-    public CharacterSaveData CharacterSaveData;
+    public List<CharacterSaveData> CharacterSaveDatas;
+
+    // Backward-compatible accessor used across gameplay code
+    public CharacterSaveData CharacterSaveData => GetCharacterUse() ?? (CharacterSaveDatas != null && CharacterSaveDatas.Count > 0 ? CharacterSaveDatas[0] : null);
 
     protected internal override void OnInit()
     {
@@ -22,46 +26,86 @@ public class UserSaveData : BaseUserData
         SfxOn = true;
         MusicOn = true;
         VibrateOn = true;
-        CharacterSaveData = new CharacterSaveData();
+        CharacterSaveDatas = new List<CharacterSaveData>();
         Level = 1;
         Coin = 0;
 
-        LoadCharacter();
+        LoadCharacters();
     }
 
     protected internal override void OnLoad()
     {
         base.OnLoad();
-        CharacterSaveData ??= new CharacterSaveData();
-        LoadCharacter();
+        CharacterSaveDatas ??= new List<CharacterSaveData>();
+        LoadCharacters();
     }
 
-    // Sync single save data with current GameConfig characters
-    public void LoadCharacter()
+    public void LoadCharacters()
     {
-        if (GameConfig.Ins?.CharaterDatas == null || GameConfig.Ins.CharaterDatas.Count == 0)
+        if (GameConfig.Ins?.CharaterDatas == null)
             return;
 
-        CharacterSaveData ??= new CharacterSaveData();
+        // add missing entries
+        foreach (var cfg in GameConfig.Ins.CharaterDatas)
+        {
+            if (!CharacterSaveDatas.Any(c => c.CharacterID == cfg.id))
+            {
+                CharacterSaveDatas.Add(new CharacterSaveData()
+                {
+                    CharacterID = cfg.id,
+                    Level = 1,
+                    IsUnlock = cfg.IsUnlock,
+                    IsUse = cfg.IsUse,
+                    CurrHP = cfg.HP,
+                    CurrSpeed = cfg.Speed,
+                    DamageLeft = cfg.DamgeLeftHand,
+                    DamageRight = cfg.DamgeRightHand,
+                });
+            }
+        }
 
-        var cfg = GameConfig.Ins.CharaterDatas.FirstOrDefault(c => c.id == CharacterSaveData.CharacterID)
-                  ?? GameConfig.Ins.CharaterDatas[0];
+        // remove entries that no longer exist in config
+        CharacterSaveDatas.RemoveAll(s => !GameConfig.Ins.CharaterDatas.Any(c => c.id == s.CharacterID));
 
-        CharacterSaveData.CharacterID = cfg.id;
-
-        // Initialize current stats if needed
-        if (CharacterSaveData.Level <= 0) CharacterSaveData.Level = 1;
-        if (CharacterSaveData.CurrHP <= 0) CharacterSaveData.CurrHP = cfg.HP;
-        if (CharacterSaveData.CurrSpeed <= 0) CharacterSaveData.CurrSpeed = cfg.Speed;
-        if (CharacterSaveData.DamageLeft <= 0) CharacterSaveData.DamageLeft = cfg.DamgeLeftHand;
-        if (CharacterSaveData.DamageRight <= 0) CharacterSaveData.DamageRight = cfg.DamgeRightHand;
+        // ensure only one IsUse
+        int useCount = CharacterSaveDatas.Count(c => c.IsUse);
+        if (useCount == 0 && CharacterSaveDatas.Count > 0)
+            CharacterSaveDatas[0].IsUse = true;
+        else if (useCount > 1)
+        {
+            bool kept = false;
+            for (int i = 0; i < CharacterSaveDatas.Count; i++)
+            {
+                if (!CharacterSaveDatas[i].IsUse) continue;
+                if (!kept) kept = true;
+                else CharacterSaveDatas[i].IsUse = false;
+            }
+        }
 
         Save();
     }
 
     public CharacterSaveData GetCharacterUse()
     {
-        return CharacterSaveData != null && CharacterSaveData.IsUse ? CharacterSaveData : null;
+        return CharacterSaveDatas?.Find(_ => _.IsUse);
+    }
+
+    public CharacterSaveData GetCharacter(int id)
+    {
+        return CharacterSaveDatas?.Find(_ => _.CharacterID == id);
+    }
+
+    public void EquipCharacter(CharacterSaveData data)
+    {
+        if (CharacterSaveDatas == null || data == null) return;
+
+        foreach (var item in CharacterSaveDatas)
+            item.IsUse = false;
+
+        var target = CharacterSaveDatas.Find(c => c.CharacterID == data.CharacterID);
+        if (target != null) target.IsUse = true;
+
+        SaveAndNotify("EquipCharacter");
     }
 
     public void NextLevel()
@@ -76,10 +120,9 @@ public class UserSaveData : BaseUserData
         SaveAndNotify("coin");
     }
 
-    // Force update/sync with GameConfig (call after changing GameConfig in editor)
-    public void UpdateCharacter()
+    public void UpdateCharacters()
     {
-        LoadCharacter();
-        SaveAndNotify("UpdateCharacter");
+        LoadCharacters();
+        SaveAndNotify("UpdateCharacters");
     }
 }

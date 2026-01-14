@@ -79,10 +79,16 @@ public class CharacterTab : TabContent
 
                 ch.name = Draw.TextField("Name", ch.name, 200);
                 ch.Prefab = Draw.ObjectField("Prefab", ch.Prefab, 200);
+
+                Draw.Space(6);
+                ch.IsUnlock = Draw.ToggleField("Default Unlock", ch.IsUnlock);
+                ch.IsUse = Draw.ToggleField("Use Start Game", ch.IsUse);
+
                 ch.HP = Draw.FloatField("HP", ch.HP, 200);
                 ch.Speed = Draw.FloatField("Speed", ch.Speed, 200);
                 ch.DamgeLeftHand = Draw.FloatField("Damage Left", ch.DamgeLeftHand, 200);
                 ch.DamgeRightHand = Draw.FloatField("Damage Right", ch.DamgeRightHand, 200);
+                ch.Price = Draw.IntField("Price", ch.Price, 200);
 
                 EditorGUI.indentLevel--;
                 Draw.SetDirty(GameConfig.Ins);

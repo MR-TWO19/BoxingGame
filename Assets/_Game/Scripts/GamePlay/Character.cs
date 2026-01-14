@@ -41,8 +41,17 @@ public class Character : MonoBehaviour
     }
 
     #region Public Methods
+
+    public void OffColider()
+    {
+        ColliderCharacter.enabled = false;
+        rigidbodyCharacter.isKinematic = true;
+    }
+
     public void SetUp(string name, PowerExtraData data, TeamType _teamType, List<CharacterState> useSkills)
     {
+        txtName.gameObject.SetActive(true);
+
         txtName.text = name;
         teamType = _teamType;
         this.useSkills.Clear();

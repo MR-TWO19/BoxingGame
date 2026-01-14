@@ -14,7 +14,9 @@ public class OnsVSOneMode : GameModeBase
 
     public override void SetUpGame(int level)
     {
-        GameObject playerPrefab = GameManager.Ins.CharacterList[0];
+        var data = UserSaveData.Ins.GetCharacterUse();
+
+        GameObject playerPrefab = GameConfig.Ins.GetCharacterData(data.CharacterID).Prefab;
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(4);
 
         PowerExtraData powerExtraData = new()

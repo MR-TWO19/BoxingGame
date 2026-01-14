@@ -25,11 +25,14 @@ public class MainView : BaseView
         });
         btnPlay.OnClick.OnTrigger.Event.AddListener(() =>
         {
+
+            GameManager.Ins.LoadArena();
             PlayPopup.Show(GameMode.OneVSOne);
         });
 
         btnChallenge.OnClick.OnTrigger.Event.AddListener(() =>
         {
+            GameManager.Ins.LoadArena();
             PlayPopup.Show(GameMode.OneVSMany);
         });
         btnUpgrade.OnClick.OnTrigger.Event.AddListener(() =>

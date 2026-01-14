@@ -18,38 +18,38 @@ public class ManyVSManyMode : GameModeBase
 
     public override void SetUpGame(int level)
     {
-        randomRemove.Clear();
+        //randomRemove.Clear();
 
-        PowerExtraData powerExtraData = new()
-        {
-            HP = UserSaveData.Ins.CharacterSaveData.CurrHP,
-            Speed = UserSaveData.Ins.CharacterSaveData.CurrSpeed,
-            DamgeLeftHand = UserSaveData.Ins.CharacterSaveData.DamageLeft,
-            DamgeRightHand = UserSaveData.Ins.CharacterSaveData.DamageRight,
-        };
+        //PowerExtraData powerExtraData = new()
+        //{
+        //    HP = UserSaveData.Ins.CharacterSaveData.CurrHP,
+        //    Speed = UserSaveData.Ins.CharacterSaveData.CurrSpeed,
+        //    DamgeLeftHand = UserSaveData.Ins.CharacterSaveData.DamageLeft,
+        //    DamgeRightHand = UserSaveData.Ins.CharacterSaveData.DamageRight,
+        //};
 
-        CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2),
-            powerExtraData, TeamType.Ally, true, new()); // Create player
-        CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), 
-            GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
-        CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), 
-            GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
+        //CreateCharacter("Player", GameManager.Ins.CharacterList[0], GameManager.Ins.PosAllys.GetTransform(2),
+        //    powerExtraData, TeamType.Ally, true, new()); // Create player
+        //CreateCharacter("Ally 2", GameManager.Ins.CharacterList[2], GameManager.Ins.PosAllys.GetTransform(3), 
+        //    GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
+        //CreateCharacter("Ally 1", GameManager.Ins.CharacterList[1], GameManager.Ins.PosAllys.GetTransform(1), 
+        //    GameModeConfig.Ins.ManyVsManyMode.AllyExtraData, TeamType.Ally, false, GameModeConfig.Ins.ManyVsManyMode.useSkillAllys); // Create Ally
 
 
 
-        LevelGameData levelGameData = GameModeConfig.Ins.OneVsManyMode.LevelGameDatas[level - 1];
+        //LevelGameData levelGameData = GameModeConfig.Ins.OneVsManyMode.LevelGameDatas[level - 1];
 
-        int idxName = 0;
-        foreach (var item in levelGameData.EnemyInfors)
-        {
-            for (int i = 0; i < item.Quanlity; i++)
-            {
-                idxName++;
-                Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(GetPosRandom());
-                GameObject enemyPrefab = GameConfig.Ins.GetCharacterData(item.CharacterID).Prefab;
-                CreateCharacter($"Enemy {idxName}", enemyPrefab, posEnemy, item.EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
-            }
-        }
+        //int idxName = 0;
+        //foreach (var item in levelGameData.EnemyInfors)
+        //{
+        //    for (int i = 0; i < item.Quanlity; i++)
+        //    {
+        //        idxName++;
+        //        Transform posEnemy = GameManager.Ins.PosEnemys.GetTransform(GetPosRandom());
+        //        GameObject enemyPrefab = GameConfig.Ins.GetCharacterData(item.CharacterID).Prefab;
+        //        CreateCharacter($"Enemy {idxName}", enemyPrefab, posEnemy, item.EnemyExtraData, TeamType.Enemy, false, levelGameData.UseSkills); // Create Enemy
+        //    }
+        //}
 
     }
 

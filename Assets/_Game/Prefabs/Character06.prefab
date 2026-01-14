@@ -107,6 +107,8 @@ MonoBehaviour:
     id: 0
     name: Character
     Prefab: {fileID: 0}
+    IsUnlock: 0
+    IsUse: 0
     HP: 0
     Speed: 0
     DamgeLeftHand: 0
@@ -115,6 +117,8 @@ MonoBehaviour:
     id: 0
     name: 
     Prefab: {fileID: 0}
+    IsUnlock: 0
+    IsUse: 0
     HP: 0
     Speed: 0
     DamgeLeftHand: 0
@@ -170,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5797091857838713965
 RectTransform:
   m_ObjectHideFlags: 0

@@ -21,7 +21,9 @@ public class OnsVSManyMode : GameModeBase
     public override void SetUpGame(int level)
     {
         randomRemove.Clear();
-        GameObject playerPrefab = GameManager.Ins.CharacterList[0];
+        var data = UserSaveData.Ins.GetCharacterUse();
+
+        GameObject playerPrefab = GameConfig.Ins.GetCharacterData(data.CharacterID).Prefab;
         Transform posPlayer = GameManager.Ins.PosAllys.GetTransform(2);
         PowerExtraData powerExtraData = new()
         {

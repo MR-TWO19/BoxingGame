@@ -126,8 +126,8 @@ TextureImporter:
       name: _
       rect:
         serializedVersion: 2
-        x: 1339
-        y: 2026
+        x: 4001
+        y: 3010
         width: 67
         height: 105
       alignment: 0
@@ -148,8 +148,8 @@ TextureImporter:
       name: buttonSetting1
       rect:
         serializedVersion: 2
-        x: 2842
-        y: 3251
+        x: 6
+        y: 610
         width: 851
         height: 839
       alignment: 0
@@ -170,8 +170,8 @@ TextureImporter:
       name: Group 41497
       rect:
         serializedVersion: 2
-        x: 6
-        y: 2292
+        x: 1351
+        y: 1458
         width: 1482
         height: 1798
       alignment: 0
@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2842
-        y: 2677
+        y: 2484
         width: 1086
         height: 565
       alignment: 0
@@ -214,8 +214,8 @@ TextureImporter:
       name: Group 41499
       rect:
         serializedVersion: 2
-        x: 1137
-        y: 2127
+        x: 3864
+        y: 3210
         width: 169
         height: 156
       alignment: 0
@@ -236,8 +236,8 @@ TextureImporter:
       name: Group 41500
       rect:
         serializedVersion: 2
-        x: 959
-        y: 2125
+        x: 3686
+        y: 3208
         width: 169
         height: 158
       alignment: 9
@@ -258,13 +258,13 @@ TextureImporter:
       name: Rectangle 2288
       rect:
         serializedVersion: 2
-        x: 2842
-        y: 1941
+        x: 6
+        y: 60
         width: 845
         height: 225
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 212, y: 1, z: 212, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -280,13 +280,13 @@ TextureImporter:
       name: Rectangle 2289
       rect:
         serializedVersion: 2
-        x: 2842
-        y: 1707
+        x: 860
+        y: 60
         width: 845
         height: 225
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 212, y: 1, z: 212, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -302,8 +302,8 @@ TextureImporter:
       name: Rectangle 2775
       rect:
         serializedVersion: 2
-        x: 959
-        y: 1999
+        x: 3306
+        y: 3249
         width: 371
         height: 117
       alignment: 0
@@ -324,13 +324,13 @@ TextureImporter:
       name: Rectangle 2776
       rect:
         serializedVersion: 2
-        x: 2914
-        y: 1473
+        x: 912
+        y: 306
         width: 845
         height: 225
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 229, y: 1, z: 212, w: 12}
       customData: 
       outline: []
       physicsShape: []
@@ -346,13 +346,13 @@ TextureImporter:
       name: Rectangle 2777
       rect:
         serializedVersion: 2
-        x: 2842
-        y: 1707
+        x: 860
+        y: 60
         width: 845
         height: 225
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 212, y: 1, z: 212, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -368,8 +368,8 @@ TextureImporter:
       name: Rectangle 2778
       rect:
         serializedVersion: 2
-        x: 959
-        y: 1999
+        x: 3306
+        y: 3249
         width: 371
         height: 117
       alignment: 0
@@ -390,8 +390,8 @@ TextureImporter:
       name: settings
       rect:
         serializedVersion: 2
-        x: 1339
-        y: 1913
+        x: 2842
+        y: 3095
         width: 104
         height: 104
       alignment: 0
@@ -413,7 +413,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2842
-        y: 2420
+        y: 2227
         width: 1020
         height: 248
       alignment: 0
@@ -434,8 +434,8 @@ TextureImporter:
       name: UI - Coin
       rect:
         serializedVersion: 2
-        x: 1315
-        y: 2140
+        x: 3864
+        y: 3058
         width: 128
         height: 143
       alignment: 9
@@ -456,8 +456,8 @@ TextureImporter:
       name: UI - Coin-1
       rect:
         serializedVersion: 2
-        x: 1315
-        y: 2140
+        x: 3864
+        y: 3058
         width: 128
         height: 143
       alignment: 9
@@ -478,13 +478,13 @@ TextureImporter:
       name: Ui-Button1
       rect:
         serializedVersion: 2
-        x: 2842
-        y: 2175
-        width: 895
-        height: 236
-      alignment: 9
-      pivot: {x: 0.5, y: 0.50211865}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 6
+        y: 294
+        width: 897
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 225, y: 1, z: 224, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -500,8 +500,8 @@ TextureImporter:
       name: Vector 603
       rect:
         serializedVersion: 2
-        x: 959
-        y: 1913
+        x: 4001
+        y: 3124
         width: 79
         height: 77
       alignment: 0
@@ -522,7 +522,7 @@ TextureImporter:
       name: image 48
       rect:
         serializedVersion: 2
-        x: 1497
+        x: 6
         y: 1690
         width: 1336
         height: 2400
@@ -544,12 +544,12 @@ TextureImporter:
       name: Group 41506
       rect:
         serializedVersion: 2
-        x: 6
-        y: 605
+        x: 2842
+        y: 540
         width: 944
         height: 1678
       alignment: 9
-      pivot: {x: 0.53213274, y: 0.56058395}
+      pivot: {x: 0.5321322, y: 0.560584}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -566,8 +566,8 @@ TextureImporter:
       name: image (1) 1
       rect:
         serializedVersion: 2
-        x: 959
-        y: 856
+        x: 1351
+        y: 3265
         width: 1946
         height: 825
       alignment: 9
@@ -580,6 +580,50 @@ TextureImporter:
       bones: []
       spriteID: 3730bb4ecb320d1409cf3e894462340b
       internalID: 1128637239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons8-play-90
+      rect:
+        serializedVersion: 2
+        x: 4032
+        y: 4037
+        width: 49
+        height: 53
+      alignment: 9
+      pivot: {x: 0.45918366, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14e319bd66a5fc4d8518aaca6b9b9d1
+      internalID: -850214753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: image (2)
+      rect:
+        serializedVersion: 2
+        x: 3306
+        y: 3375
+        width: 717
+        height: 715
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6155e7ce0f00ee4ba0b429790a0659d
+      internalID: -1039198989
       vertices: []
       indices: 
       edges: []
@@ -615,7 +659,9 @@ TextureImporter:
       Vector 603: 410060633
       _: 346507650
       buttonSetting1: 1968011927
+      icons8-play-90: -850214753
       image (1) 1: 1128637239
+      image (2): -1039198989
       image 48: 1907878997
       settings: -307925394
       tag: -717638874

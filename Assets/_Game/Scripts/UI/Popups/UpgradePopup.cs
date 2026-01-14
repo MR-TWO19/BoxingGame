@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Doozy.Engine.UI;
+using System.Collections.Generic;
 using TMPro;
 using TwoCore;
 using UnityEngine;
@@ -12,198 +13,253 @@ public class UpgradePopup : BasePopup
     }
 
     [Header("UI References")]
+    [SerializeField] private GameObject frameBuy;
+    [SerializeField] private GameObject frameUpgrade;
+
+    [SerializeField] private UIButton btnBuy;
     [SerializeField] private UIButton btnUpgrade;
+    [SerializeField] private UIButton btnEquip;
+    [SerializeField] private UIButton btnNextLeft;
+    [SerializeField] private UIButton btnNextRight;
     [SerializeField] private UIButton btnClose;
 
-    [Header("HP Upgrade")]
-    [SerializeField] private TextMeshProUGUI txtCurrentHP;
-    [SerializeField] private TextMeshProUGUI txtPrice;
+    [Header("Texts")]
+    //[SerializeField] private TextMeshProUGUI txtLevel;
+    [SerializeField] private TextMeshProUGUI txtPriceBuy;
+    [SerializeField] private TextMeshProUGUI txtPriceUpgrade;
 
-    [Header("Speed Upgrade")]
-    [SerializeField] private TextMeshProUGUI txtCurrentSpeed;
-
-    [Header("Left Attack Upgrade")]
-    [SerializeField] private TextMeshProUGUI txtCurrentLAtk;
-
-    [Header("Right Attack Upgrade")]
-    [SerializeField] private TextMeshProUGUI txtCurrentRAtk;
+    [SerializeField] private TextMeshProUGUI txtHP;
+    [SerializeField] private TextMeshProUGUI txtSpeed;
+    [SerializeField] private TextMeshProUGUI txtLAtk;
+    [SerializeField] private TextMeshProUGUI txtRAtk;
 
     [Header("Character Display")]
     [SerializeField] private Transform characterPos;
 
-    [Header("Character")]
-    [SerializeField] private Character character;
+    private readonly Dictionary<int, GameObject> objCharacters = new();
+    private readonly Dictionary<int, CharacterSaveData> currSaveDatas = new();
 
-    private CharacterSaveData characterData;
-
+    private int idxCharacter;
+    private int priceUpgrade;
 
     protected override void Awake()
     {
         base.Awake();
 
+        if (btnNextLeft != null)
+            btnNextLeft.OnClick.OnTrigger.Event.AddListener(() => NextOnClick(true));
+
+        if (btnNextRight != null)
+            btnNextRight.OnClick.OnTrigger.Event.AddListener(() => NextOnClick(false));
+
+        if (btnBuy != null)
+            btnBuy.OnClick.OnTrigger.Event.AddListener(BuyOnClick);
+
         if (btnUpgrade != null)
-            btnUpgrade.OnClick.OnTrigger.Event.AddListener(UpgradeAll);
-        btnClose.OnClick.OnTrigger.Event.AddListener(Hide);
+            btnUpgrade.OnClick.OnTrigger.Event.AddListener(UpgradeOnClick);
+
+        if (btnEquip != null)
+            btnEquip.OnClick.OnTrigger.Event.AddListener(EquipOnClick);
+
+        if (btnClose != null)
+            btnClose.OnClick.OnTrigger.Event.AddListener(Hide);
     }
 
     private void OnEnable()
     {
-        UpdateUI();
+        LoadCharacters();
     }
 
-
-    private void UpdateUI()
+    private void LoadCharacters()
     {
+        var saveDatas = UserSaveData.Ins.CharacterSaveDatas;
+        if (saveDatas == null || saveDatas.Count == 0)
+            return;
 
-        characterData = UserSaveData.Ins.CharacterSaveData;
+        foreach (var c in objCharacters.Values)
+            if (c != null) Destroy(c);
 
-        var upgradeData = GameConfig.Ins.UpdareData;
+        objCharacters.Clear();
+        currSaveDatas.Clear();
 
-        float addHp = upgradeData.HP.value;
-        float addSpeed = upgradeData.Speed.value;
-        float addLAtk = upgradeData.LATK.value;
-        float addRAtk = upgradeData.RATK.value;
-        int price = upgradeData.HP.Price * UserSaveData.Ins.CharacterSaveData.Level;
+        for (int i = 0; i < saveDatas.Count; i++)
+        {
+            var save = saveDatas[i];
+            var data = GameConfig.Ins.GetCharacterData(save.CharacterID);
+            if (data == null || data.Prefab == null) continue;
 
-        // HP
-        if (txtCurrentHP != null)
-            txtCurrentHP.text = $"{characterData.CurrHP:F1} <size=70%><color=#00FF00>+{addHp:F1}</color></size>";
+            GameObject obj = Instantiate(data.Prefab, characterPos);
+            Character character = obj.GetComponent<Character>();
+            character.OffColider();
 
-        // Speed
-        if (txtCurrentSpeed != null)
-            txtCurrentSpeed.text = $"{characterData.CurrSpeed:F2} <size=70%><color=#00FF00>+{addSpeed:F2}</color></size>";
+            obj.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 180, 0));
+            obj.transform.localScale = Vector3.zero;
+            obj.SetActive(false);
 
-        // Left Attack
-        if (txtCurrentLAtk != null)
-            txtCurrentLAtk.text = $"{characterData.DamageLeft:F1} <size=70%><color=#00FF00>+{addLAtk:F1}</color></size>";
+            objCharacters.Add(i, obj);
+            currSaveDatas.Add(i, save);
+        }
 
-        // Right Attack
-        if (txtCurrentRAtk != null)
-            txtCurrentRAtk.text = $"{characterData.DamageRight:F1} <size=70%><color=#00FF00>+{addRAtk:F1}</color></size>";
+        var usingChar = UserSaveData.Ins.GetCharacterUse() ?? saveDatas[0];
+        idxCharacter = saveDatas.IndexOf(usingChar);
+        if (idxCharacter < 0) idxCharacter = 0;
 
-        if (txtPrice != null)
-            txtPrice.text = $"{price}";
+        btnNextLeft.gameObject.SetActive(idxCharacter != 0);
+        btnNextRight.gameObject.SetActive(idxCharacter != saveDatas.Count - 1);
 
-        if (btnUpgrade != null)
-            btnUpgrade.gameObject.SetActive(true);
+        if (objCharacters.TryGetValue(idxCharacter, out var chObj) && chObj != null)
+        {
+            chObj.SetActive(true);
+            chObj.transform.DOScale(Vector3.one * 500, 0.35f);
+        }
+
+        ShowState(currSaveDatas[idxCharacter]);
     }
 
-    private bool CanAfford(int price)
+    private void ShowState(CharacterSaveData save)
     {
+        if (save == null) return;
 
-        if (UserSaveData.Ins.Coin < price)
+        if (save.IsUnlock)
+            ShowUpgrade(save);
+        else
+            ShowBuy(save);
+    }
+
+    private void ShowUpgrade(CharacterSaveData save)
+    {
+        var upgrade = GameConfig.Ins.UpdareData;
+        priceUpgrade = save.Level * (upgrade?.HP?.Price ?? 0);
+
+        //if (txtLevel != null) txtLevel.text = $"Level {save.Level}";
+
+        if (upgrade != null)
+        {
+            if (txtHP != null)
+                txtHP.text = $"{save.CurrHP:0.0#} <size=70%><color=#00FF00>+{upgrade.HP.value:0.0#}</color></size>";
+            if (txtSpeed != null)
+                txtSpeed.text = $"{save.CurrSpeed:0.0#} <size=70%><color=#00FF00>+{upgrade.Speed.value:0.0#}</color></size>";
+            if (txtLAtk != null)
+                txtLAtk.text = $"{save.DamageLeft:0.0#} <size=70%><color=#00FF00>+{upgrade.LATK.value:0.0#}</color></size>";
+            if (txtRAtk != null)
+                txtRAtk.text = $"{save.DamageRight:0.0#} <size=70%><color=#00FF00>+{upgrade.RATK.value:0.0#}</color></size>";
+        }
+
+        if (txtPriceUpgrade != null)
+            txtPriceUpgrade.text = $"{priceUpgrade}";
+
+        if (frameBuy != null) frameBuy.SetActive(false);
+        if (frameUpgrade != null) frameUpgrade.SetActive(true);
+
+        if (btnEquip != null)
+            btnEquip.gameObject.SetActive(!save.IsUse);
+    }
+
+    private void ShowBuy(CharacterSaveData save)
+    {
+        // No character price configured yet; reuse upgrade price as fallback to avoid null UI
+
+        int priceBuy = GameConfig.Ins.GetCharacterData(save.CharacterID).Price; ;
+
+        if (txtPriceBuy != null)
+            txtPriceBuy.text = $"{priceBuy}";
+
+        if (frameBuy != null) frameBuy.SetActive(true);
+        if (frameUpgrade != null) frameUpgrade.SetActive(false);
+
+        if (btnEquip != null)
+            btnEquip.gameObject.SetActive(false);
+    }
+
+    private void NextOnClick(bool isLeft)
+    {
+        if (!objCharacters.TryGetValue(idxCharacter, out var currentObj) || currentObj == null)
+            return;
+
+        currentObj.transform.DOScale(Vector3.zero, 0.35f).OnComplete(() =>
+        {
+            currentObj.SetActive(false);
+
+            idxCharacter += isLeft ? -1 : 1;
+
+            btnNextLeft.gameObject.SetActive(idxCharacter != 0);
+            btnNextRight.gameObject.SetActive(idxCharacter != UserSaveData.Ins.CharacterSaveDatas.Count - 1);
+
+            if (objCharacters.TryGetValue(idxCharacter, out var nextObj) && nextObj != null)
+            {
+                nextObj.SetActive(true);
+                nextObj.transform.localScale = Vector3.zero;
+                nextObj.transform.DOScale(Vector3.one * 500, 0.35f);
+            }
+
+            ShowState(currSaveDatas[idxCharacter]);
+        });
+    }
+
+    private void EquipOnClick()
+    {
+        UserSaveData.Ins.EquipCharacter(currSaveDatas[idxCharacter]);
+        if (btnEquip != null)
+            btnEquip.gameObject.SetActive(false);
+    }
+
+    private void UpgradeOnClick()
+    {
+        if (GameConfig.Ins.UpdareData == null)
+            return;
+
+        if (UserSaveData.Ins.Coin < priceUpgrade)
         {
             Hide();
+
             ConfirmPopup.ShowOneButtonNoQueue(
                 "NOTIFY",
                 "You do not have enough money to perform this action.",
                 null,
-                "OK"
-            );
-            return false;
+                "OK");
+            return;
         }
-        return true;
-    }
-
-    private void UpgradeAll()
-    {
-        if (characterData == null || GameConfig.Ins.UpdareData == null)
-            return;
-
-        var upgradeData = GameConfig.Ins.UpdareData;
-        int price = upgradeData.HP.Price * UserSaveData.Ins.CharacterSaveData.Level;
-        float addHp = upgradeData.HP.value;
-        float addSpeed = upgradeData.Speed.value;
-        float addLAtk = upgradeData.LATK.value;
-        float addRAtk = upgradeData.RATK.value;
-
-        if (!CanAfford(price))
-            return;
 
         SoundManager.Ins.PlayOneShot(SoundID.UPGRADE);
 
-        characterData.Level += 1;
-        characterData.CurrHP += addHp;
-        characterData.CurrSpeed += addSpeed;
-        characterData.DamageLeft += addLAtk;
-        characterData.DamageRight += addRAtk;
+        var save = currSaveDatas[idxCharacter];
+        var upgrade = GameConfig.Ins.UpdareData;
 
-        UserSaveData.Ins.AddCoin(-price);
+        save.CurrHP += upgrade.HP.value;
+        save.CurrSpeed += upgrade.Speed.value;
+        save.DamageLeft += upgrade.LATK.value;
+        save.DamageRight += upgrade.RATK.value;
+        save.Level++;
+
+        UserSaveData.Ins.AddCoin(-priceUpgrade);
         UserSaveData.Ins.Save();
 
-        UpdateUI();
-        AnimateUpgradeSuccess(txtCurrentHP);
-        AnimateUpgradeSuccess(txtCurrentSpeed);
-        AnimateUpgradeSuccess(txtCurrentLAtk);
-        AnimateUpgradeSuccess(txtCurrentRAtk);
-
-        PlayRandomUpgradeAnimation();
+        ShowUpgrade(save);
     }
 
-    private void PlayRandomUpgradeAnimation()
+    private void BuyOnClick()
     {
-        if (character == null || character.animator == null)
+        var save = currSaveDatas[idxCharacter];
+
+        int priceBuy = priceUpgrade;
+        if (UserSaveData.Ins.Coin < priceBuy)
+        {
+            Hide();
+
+            ConfirmPopup.ShowOneButtonNoQueue(
+                "NOTIFY",
+                "You do not have enough money to perform this action.",
+                null,
+                "OK");
             return;
-
-        if (character.characterState != CharacterState.Idle)
-            return;
-
-        var anims = new[] {
-            CharacterState.PunchLeft,
-            CharacterState.PunchRight,
-            CharacterState.PunchUppercut,
-            CharacterState.PunchStraight
-        };
-        int idx = Random.Range(0, anims.Length);
-        var chosen = anims[idx];
-
-        character.characterState = chosen;
-        character.animator.SetTrigger(chosen.ToString());
-
-        float duration = GetClipDurationSafe(chosen);
-        if (duration <= 0f) return;
-        DOVirtual.DelayedCall(duration, () => {
-            if (character == null || character.animator == null) return;
-            character.animator.SetTrigger("Idle");
-            character.characterState = CharacterState.Idle;
-        });
-    }
-
-    private float GetClipDurationSafe(CharacterState state)
-    {
-        if (character == null || character.animator == null)
-            return 0f;
-
-        var controller = character.animator.runtimeAnimatorController;
-        if (controller == null)
-            return 0f;
-
-        string clipName = state.ToString();
-        var clips = controller.animationClips;
-        if (clips == null)
-            return 0f;
-
-        for (int i = 0; i < clips.Length; i++) {
-            var clip = clips[i];
-            if (clip != null && clip.name == clipName)
-                return clip.length;
         }
 
-        return 0f;
-    }
+        SoundManager.Ins.PlayOneShot(SoundID.CLICK);
 
-    private void AnimateUpgradeSuccess(TextMeshProUGUI text)
-    {
-        if (text == null)
-            return;
+        save.IsUnlock = true;
+        UserSaveData.Ins.AddCoin(-priceBuy);
+        UserSaveData.Ins.Save();
 
-        text.transform.DOKill();
-        text.transform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 5, 0.5f);
-
-        var originalColor = text.color;
-        text.DOColor(Color.green, 0.15f).OnComplete(() =>
-        {
-            text.DOColor(originalColor, 0.15f);
-        });
+        ShowUpgrade(save);
     }
 }

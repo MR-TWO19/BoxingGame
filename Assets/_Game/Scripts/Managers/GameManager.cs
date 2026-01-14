@@ -10,7 +10,6 @@ public class GameManager : SingletonMono<GameManager>
     public PosCharacters PosEnemys;
     public PosCharacters PosAllys;
     public GameMode GameModeEnum;
-    public List<GameObject> CharacterList;
     public IGameModeBase GameMove;
 
     [SerializeField] private int coinWin;
@@ -22,6 +21,7 @@ public class GameManager : SingletonMono<GameManager>
         set => coinLose = value;
     }
     private int currLevel;
+    private bool isLoadArena;
 
     private void Update()
     {
@@ -30,6 +30,15 @@ public class GameManager : SingletonMono<GameManager>
             GameMove.Allys.ForEach(_ => _.CustomUpdate());
             GameMove.Enemys.ForEach(_ => _.CustomUpdate());
         }    
+    }
+
+    public void LoadArena()
+    {
+        if (isLoadArena) return;
+
+        Instantiate(GameConfig.Ins.ArenaPrefab, Vector3.zero, Quaternion.identity);
+
+        isLoadArena = true;
     }
 
     public void SetUpGame(int Level, GameMode gameMode)

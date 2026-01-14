@@ -7,6 +7,7 @@ public class GameConfig : ConfigBase<GameConfig>
     public int headDamageRate; // %
     public int bellyRate; // %
 
+    public GameObject ArenaPrefab;
 
     public UpdareData UpdareData;
 
