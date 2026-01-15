@@ -26,9 +26,9 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 5
+        CharacterID: 0
         EnemyExtraData:
-          HP: 100
+          HP: 1000
           Speed: 0.1
           DamgeLeftHand: 2
           DamgeRightHand: 5
@@ -38,7 +38,7 @@ MonoBehaviour:
       DodgeRate: 0
       EnemyInfors:
       - Quanlity: 1
-        CharacterID: 6
+        CharacterID: 1
         EnemyExtraData:
           HP: 200
           Speed: 0.2
@@ -256,10 +256,10 @@ MonoBehaviour:
       - Quanlity: 1
         CharacterID: 6
         EnemyExtraData:
-          HP: 5000
+          HP: 50000
           Speed: 1.5
-          DamgeLeftHand: 110
-          DamgeRightHand: 130
+          DamgeLeftHand: 1100
+          DamgeRightHand: 1300
   OneVsManyMode:
     AllyExtraData:
       HP: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
       - Quanlity: 5
         CharacterID: 0
         EnemyExtraData:
-          HP: 1000
+          HP: 10
           Speed: 0.5
           DamgeLeftHand: 20
           DamgeRightHand: 30

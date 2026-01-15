@@ -37,10 +37,10 @@ MonoBehaviour:
     Prefab: {fileID: 2122972254015428975, guid: 6e70ac2dd964f7e4798ba322509c7e7a, type: 3}
     IsUnlock: 1
     IsUse: 1
-    HP: 10
+    HP: 50
     Speed: 0.1
-    DamgeLeftHand: 1
-    DamgeRightHand: 2
+    DamgeLeftHand: 10
+    DamgeRightHand: 10
     Price: 0
   - id: 1
     name: Character 2

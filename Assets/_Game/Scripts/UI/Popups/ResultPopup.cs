@@ -43,7 +43,7 @@ public class ResultPopup : BasePopup
 
             txtCoin.text = $"+ {GameManager.Ins.CoinWin}";
             UserSaveData.Ins.AddCoin(GameManager.Ins.CoinWin);
-            UserSaveData.Ins.NextLevel();
+            GameManager.Ins.NextLevel();
         }
         else
         {

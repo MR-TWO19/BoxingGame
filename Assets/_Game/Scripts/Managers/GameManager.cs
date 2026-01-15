@@ -96,10 +96,16 @@ public class GameManager : SingletonMono<GameManager>
 
     public void NextGame() 
     {
-        currLevel = UserSaveData.Ins.Level;
+        currLevel = GameModeEnum == GameMode.OneVSOne ? UserSaveData.Ins.Level : UserSaveData.Ins.LevelChallenge;
 
         ResetGame();
 
         LoadGame();
+    }
+
+    public void NextLevel()
+    {
+        if(GameModeEnum == GameMode.OneVSOne)   UserSaveData.Ins.NextLevel();
+        else  UserSaveData.Ins.NextLevelChallenge();
     }
 }

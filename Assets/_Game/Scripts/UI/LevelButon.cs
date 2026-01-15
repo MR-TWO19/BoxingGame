@@ -31,7 +31,15 @@ public class LevelButon : MonoBehaviour
         this.level = level;
         gameObject.SetActive(true);
 
-        bool isLock = level > UserSaveData.Ins.Level;
+        int currLevel = gameMode switch
+        {
+            GameMode.OneVSOne => UserSaveData.Ins.Level,
+            GameMode.OneVSMany => UserSaveData.Ins.LevelChallenge,
+            GameMode.ManeyVsMany => UserSaveData.Ins.Level,
+            _ => 0
+        };
+
+        bool isLock = level > currLevel;
 
         objLock.SetActive(isLock);
         btn.interactable = !isLock;

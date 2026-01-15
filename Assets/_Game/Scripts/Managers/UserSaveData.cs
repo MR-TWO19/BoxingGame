@@ -14,6 +14,7 @@ public class UserSaveData : BaseUserData
     public int Coin;
 
     public int Level;
+    public int LevelChallenge;
 
     public List<CharacterSaveData> CharacterSaveDatas;
 
@@ -28,6 +29,7 @@ public class UserSaveData : BaseUserData
         VibrateOn = true;
         CharacterSaveDatas = new List<CharacterSaveData>();
         Level = 1;
+        LevelChallenge = 1;
         Coin = 0;
 
         LoadCharacters();
@@ -111,6 +113,12 @@ public class UserSaveData : BaseUserData
     public void NextLevel()
     {
         Level++;
+        Save();
+    }
+
+    public void NextLevelChallenge()
+    {
+        LevelChallenge++;
         Save();
     }
 
