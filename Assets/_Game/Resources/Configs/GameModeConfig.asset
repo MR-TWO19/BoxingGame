@@ -276,7 +276,7 @@ MonoBehaviour:
       - Quanlity: 5
         CharacterID: 0
         EnemyExtraData:
-          HP: 10
+          HP: 1000
           Speed: 0.5
           DamgeLeftHand: 20
           DamgeRightHand: 30
